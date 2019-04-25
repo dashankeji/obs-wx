@@ -1,0 +1,78 @@
+ <view id="wrap">
+<!--我的收藏标题加图标返回-->
+ <view class="wrap_title bg-white solid-bottom padding-bottom">
+      <view class="cu-custom" style="height:{{CustomBar}}px;">
+        <view class="cu-bar fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>我的收藏</text>
+          </navigator>
+        </view>
+      </view>
+</view>
+
+<!--顶部操作-->
+<view class="container justify-between">
+  <picker bindchange="bindPickerChange" value="{{index}}" style="width:23%" range="{{array}}">
+    <view class="picker">
+      <view class="fb-type">
+        <view class="type-label">{{array[index]}}<text class="icon-bottom" style="font-size:30rpx"></text></view>
+      </view>
+    </view>
+  </picker>
+
+  <view style="height:66rpx;width:58%;background: #f4f4f4;line-height:66rpx;display:flex">
+     <text class="icon-sousuo" style="font-size:40rpx"></text>
+     <form bindsubmit="searchSubmit" report-submit='true'>
+         <input type="text" placeholder='请输入搜索内容'  bindconfirm="searchSubmit" confirm-type='search' style="height:66rpx;line-height:66rpx;font-size:29rpx"></input>
+     </form>
+  </view>
+  <block wx:if="{{batchManagementFlag}}">
+    <view style="line-height:66rpx;text-align:center;font-size:29rpx" bindtap='batchManagementClick'>
+      管理
+    </view>
+  </block>
+  <block wx:else>
+    <view style="line-height:66rpx;text-align:center;font-size:29rpx"  bindtap='completeClick'>
+      完成
+    </view>
+    <!--底部操作-->
+    <view class="flex justify-between padding text-red bg-white" style="position:fixed;bottom:0;left:0;width:92%">
+                <view class="flex" style="align-items:center">
+                        <text class="text-xxl icon-yuandianda {{allCheckFlag ? 'text-fff' : 'text-red'}}" bindtap="allCheckClcik" style=""></text>    
+                        <text class="text-bold text-xl text-black"> 全选</text>
+                </view>
+               <view style="background-color:red;color:#fff;padding:10rpx 45rpx;border-radius:15rpx" bindtap='allDeleteShoppingClick'>
+                   一键删除
+               </view>
+    </view>
+  </block>
+</view>
+
+<!--收藏列表-->
+<view>
+    <block wx:for="{{ShoppingData.data}}" wx:key="{{index}}">
+          <view class="cu-list-two menu bg-white">
+                <view class="cu-item">
+                   <block wx:if="{{!batchManagementFlag}}">
+                     <view class="flex" style='margin-right:10rpx;align-items: center;'><text class="text-xxl icon-yuandianda {{allCheckNum[index] ? 'text-red' : 'text-fff'}}" bindtap="singleCheckClick" data-index="{{index}}"></text></view>
+                   </block>
+                   <navigator class="none" url="/pages/product-con/index?id={{item.pid}}" open-type="navigate" hover-class="none">
+                                            <view class="cu-avatar xl" style="background-image:url({{item.image}})"></view>
+                   </navigator>
+                                            <view class='content padding-left' style='position:relative'>
+                                                  <view class="text-xl" style="width:70%;overflow:hidden">{{item.store_name}}</view>
+                                                  <view class="text-sm text-grey margin-top-xs" style="width:70%;overflow:hidden">{{allShoppingShouCangres[index]}}人收藏</view>
+                                                  <view style="position:absolute;left:20rpx;bottom:10rpx;font-size:38rpx;color:red">
+                                                      <view class=''>￥{{item.price}}</view>
+                                                  </view>
+                                            </view>
+                                            
+                                            <view style="position:absolute;right:25rpx;bottom:40rpx;">
+                                                  <text class='text-red' data-id="{{item.pid}}" bindtap="deleteShoppingClick">取消收藏</text>
+                                            </view>
+                </view>                      
+          </view>
+    </block>
+</view>
+
+</view>

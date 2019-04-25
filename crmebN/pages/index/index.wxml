@@ -1,0 +1,154 @@
+<!--标题-->
+<view class="wrap_title" style="height:{{CustomBar}}px;line-height:{{CustomBar}}px;">
+    <view class='text-xxl padding'>
+        <text class='text-black text-bold'>欧柏尚电器</text>
+    </view>
+</view>
+
+<view class="flex">
+    <view style='flex-basis: 20%;'>
+          <image src="http://127.0.0.3/public/uploads/attach/2019/04/24/5cbfc73b976a8.png" mode='aspectFill' style="width:"></image>
+    </view>
+    <view style='flex-basis: 60%;'>2
+       
+         <view>222222</view>
+    </view>
+    <view style='flex-basis: 20%;'>3</view>
+</view>
+
+<!--搜索-->
+<view class="wrap_search">
+   <navigator class="none" url="/pages/new-list/new-list" open-type="navigate" hover-class="none">
+      <view class="cu-bar search">
+          <view class='search-form round'>
+            <text class="icon-sousuo"></text>
+            <input type="text" class="text-xl" placeholder="搜索" confirm-type="search"></input>
+          </view>
+      </view>
+   </navigator>
+</view>
+
+<!--轮播-->
+<view class="wrap_swiper" style="position:relative;top:0;left:0;">
+      <swiper class="screen-swiper" bindchange="swiperChange" circular="true" autoplay="true" interval="5000" duration="500" current='0'>
+        <swiper-item wx:for="{{imgUrls}}" wx:key>
+           <image src="{{item.pic}}" mode='aspectFill'></image>
+        </swiper-item>
+      </swiper>
+      <!--重置小圆点的样式  -->
+      <view class="dots">   
+            <block wx:for="{{imgUrls.length}}" wx:key>     
+                    <view class="dot{{index == currentSwiper ? ' active' : ''}}"></view>             
+            </block>  
+      </view>  
+</view>
+
+<!--导航-->
+<view class="wrap_nav">
+    <view class="flex padding justify-between">
+        <view class='text-center' wx:for="{{menus}}" wx:key="{{index}}">
+            <navigator class="none" url="{{index> 2 ? '/pages/wodecaifu/wodecaifu' : item.url}}" open-type="navigate" hover-class="none">
+                    <view class="" style="width:120rpx;height:120rpx;background-image:url({{item.pic}});background-size:100% 100%"></view>
+                    <view class='text-black text-bold' style="display:block">{{item.name}}</view>
+            </navigator>
+        </view>
+    </view>
+</view>
+
+<!-- 好器煮好饭 -->
+<view class="wrap_seasonalMerchandise">
+     <view>
+          <view style="height:200rpx;line-height:200rpx;text-align:center;font-size:60rpx;background-image:url({{haoQiZhuHaoFanBgImg}});background-size:100% 100%;color:#fff">
+          </view>
+    </view>
+    <view class="padding" style="background-color:#4d4d4d">
+    <block wx:for="{{hotList}}"  wx:key>
+         <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none">
+          <view class="flex justify-between margin-bottom-sm" style="box-shadow:0 0 5rpx #ccc;background-color:#fff">
+                  <view class="padding-sm flex justify-between" style="width:52%;flex-direction:column;font-weight:bold">
+                      <view>
+                          <view class="my_text_1" style="font-size:30rpx">{{item.store_name}}</view>
+                          <view class="my_text_2" style="font-size:40rpx;">{{item.store_info}}</view>
+                          <view class="margin-top-xs flex justify-between" style="font-size:23rpx">
+                              <block wx:for="{{item.keyword}}">
+                                   <text class="solids padding-xs">{{item}}</text>
+                              </block>
+                          </view>
+                      </view>
+                      <view>
+                          <view>惊喜价:￥ <text class="text-red" style="font-size:40rpx;">{{item.price}}</text></view>
+                          <view class="solids" style="width:135rpx;text-align:center;border-radius:15rpx">点击购买</view>
+                      </view>
+                  </view>
+                  <view style="width:40%;">
+                      <view class="wrap_imageOne" style="background-image:url({{item.image}});"></view>
+                  </view>
+          </view>
+         </navigator>
+    </block>
+    </view>
+</view>
+
+
+<!-- 好水煮出来 -->
+<view class="wrap_seasonalMerchandise">
+     <view>
+          <view style="height:200rpx;line-height:200rpx;text-align:center;font-size:60rpx;background-image:url({{haoShuiZhuChuLaiBgImg}});background-size:100% 100%;color:#fff">
+          </view>
+    </view>
+    <view class="padding" style="background-color:#4d4d4d">
+    <block wx:for="{{hotListTwo}}"  wx:key>
+        <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none">
+          <view class="flex justify-between margin-bottom-sm" style="box-shadow:0 0 5rpx #ccc;background-color:#fff">
+                  <view class="padding-sm flex justify-between" style="width:50%;flex-direction:column;font-weight:bold">
+                      <view>
+                          <view class="my_text_1" style="font-size:30rpx">{{item.store_name}}</view>
+                          <view class="my_text_2" style="font-size:40rpx;">{{item.store_info}}</view>
+                          <view class="margin-top-xs flex justify-between" style="font-size:23rpx">
+                              <block wx:for="{{item.keyword}}" wx:key>
+                                   <text class="solids padding-xs">{{item}}</text>
+                              </block>
+                          </view>
+                      </view>
+                      <view>
+                          <view>惊喜价:￥ <text class="text-red" style="font-size:40rpx;">{{item.price}}</text></view>
+                          <view class="solids" style="width:135rpx;text-align:center;border-radius:15rpx">点击购买</view>
+                      </view>
+                  </view>
+                  <view style="width:40%;">
+                      <view class="wrap_imageOne" style="background-image:url({{item.image}});"></view>
+                  </view>
+          </view>
+        </navigator>
+    </block>
+    </view>
+</view>
+
+<!--更多商品-->
+<view class="wrap_seasonalMerchandise">
+    <view class='text-xl padding text-center'>
+        <text class='text-black text-bold'>\\\\\更 多 商 品///</text>
+    </view>
+    <view class="flex solid-bottom justify-between" style="padding:20rpx;flex-wrap: wrap">
+              <view class=" margin-bottom-sm" style="width:49%;box-shadow:0 0 5rpx #ccc;" wx:for="{{MoreGoods}}"  wx:key>
+                  <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none">
+                      <view class="wrap_imageOne" style="background-image:url({{item.image}});background-size:100% 100%"></view>
+                      <view class='text-lg my_text_1 margin-top-xs'>
+                          <text class='text-black text-bold'>{{item.store_name}}</text>
+                      </view>
+                      <view class='basis-df text-xl text-end'>
+                                  <text class='text-red text-bold'>￥{{item.price}}</text>
+                      </view>
+                      <view class="flex margin-top-xs">
+                            <view class='basis-df text-xl text-end'>
+                                  <text class='text-bold'>销量: {{item.ficti+item.sales}}</text>
+                            </view>
+                            <view class='basis-df text-xl text-right'>
+                                  <text class='icon-gouwuche text-red text-bold'></text>
+                            </view>
+                      </view>
+                  </navigator>
+              </view>
+    </view>
+</view>
+

@@ -1,0 +1,76 @@
+<!--产品列表标题加图标返回-->
+<view class="wrap_title bg-white solid-bottom">
+      <view class="cu-custom" style="height:{{CustomBar}}px;">
+        <view class="cu-bar fixed" style="height:{{CustomBar}}px;">
+          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>产品列表</text>
+          </navigator>
+        </view>
+      </view>
+</view>
+<view class='product'>
+    <view class='header flex'>
+       <form bindsubmit="searchSubmit" report-submit='true'>
+           <view class='header-input flex'>
+              <input type='text' placeholder='请输入商品关键词' class='input-text' placeholder-class='placeholder' bindconfirm="searchSubmit" confirm-type='search' name="search"></input>
+           </view>
+       </form>
+       <view style="line-height:100rpx;display:flex;margin-left:10rpx"><view class='icon-sousuo text-xxl'></view>搜索</view>
+    </view>
+    <view class='nav flex'>
+       <view data-act='4' class='nav-li nav-total' bindtap='sort'><view class='total'>{{total}}<text class="icon-jiantouarrow486 sort-x {{active==0?'nav-active':''}}" style="margin-top:-9rpx;right:0"></text></view> </view>
+      <view data-act='2' class='nav-li' bindtap='navactive1'>销量
+       <text class='icon-jiantouarrow486 sort-x {{active==2?"nav-active":""}}' style="margin-top:-9rpx"></text>
+      </view>
+       <view data-act='1' class='nav-li' bindtap='navactive'>价格
+       <text class='icon-jiantou sort-s {{active==1?"nav-active":""}}' ></text>
+       <text class='icon-jiantouarrow486 sort-x {{active==1?"nav-active":""}}' ></text></view>
+       <view data-act='3' class='nav-li' bindtap='navactive2'>上新时间<text class='icon-jiantouarrow486 sort-x {{active==3?"nav-active":""}}' style="margin-top:-9rpx"></text></view>
+    </view>
+</view>
+<view class='productSort flex'>
+         <block wx:for="{{Arraylike}}"  >
+         
+             <view class='productSort-list {{_num==1?"productSort-list2":""}}'>
+                      <navigator url="/pages/product-con/index?id={{item.id}}" hover-class="none"    bindtap='details'>
+                           <image src='{{url}}{{item.image}}' class='list-images {{_num==1?"list-images2":""}}'></image>
+                      </navigator>
+                 <view>
+                      <view class='list-text {{_num==1?"list-text2":""}}'>{{item.store_name}}</view>
+                 <view class='list-money flex'>
+                     <view>
+                        <view class='list-num {{_num==1?"list-num2":""}}'>￥{{item.price}}</view>
+                        <view class='money-red'><text class='list-f'>已售: </text><text class='money-num'> {{item.ficti+item.sales}}</text></view>
+                     </view>
+                      <view class='icon-gouwuche list-gwc {{_num==1?"list-gwc2":""}}' data-id="{{item.id}}" bindtap='cart' ></view> 
+                 </view>
+                 </view>
+             </view>
+        
+         </block>
+    </view>
+     <view class='nav-down' hidden='{{hiddendown}}'>
+        <view class='down-title' bindtap='allproduct'>全部商品<text class='iconfont {{taber=="-1"?"icon-duihao sortd":""}}'></text></view>
+        <view class='flex'>
+            <view class='down-yi'>
+                <block wx:for="{{sortyi}}"  >
+                    <view data-idx="{{item.id}}" class='yi-sort {{currentTab==item.id?"sorton":""}}' bindtap='itemdown'>{{item.cate_name}}</view>
+                </block>
+            </view>
+        </view>
+        <view animation="{{animationData}}" class='down-er'>
+            <block wx:for="{{sorter}}">
+              <view class='downs-title' data-ider='{{item.id}}'  bindtap='wholeproduct' wx:if="{{!item.pid}}">
+                {{item.cate_name}}
+                <text class='iconfont {{taber==item.id?"icon-duihao sortd":""}}'></text>
+              </view>
+              <view data-ider='{{item.id}}' class='er-sort' bindtap='itemdowner' wx:if="{{item.pid}}">
+                {{item.cate_name}}
+                <text class='iconfont {{taber==item.id?"icon-duihao sortd":""}}'></text>
+              </view>
+            </block>
+        </view> 
+    </view>
+     <include src="/pages/foo-tan/foo-tan.wxml"/>  
+    <view class='mask' hidden='{{hiddendown}}' bindtap='maskhide' catchtouchmove='touchmove'></view> 
+   

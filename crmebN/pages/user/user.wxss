@@ -1,0 +1,337 @@
+.icon-text-color{
+  color: #f95516;
+}
+
+.icon-MaxfontSize{
+  font-size: 65rpx;
+  color: black;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.screen-swiper {
+  min-height: 375rpx;
+}
+
+.screen-swiper image {
+  width: 100%;
+  display: block;
+  height: 100%;
+  margin: 0;
+}
+
+.grid {
+display:flex;
+flex-wrap:wrap;
+}
+
+.grid.col-5>view {
+width:20%;
+}
+
+.align-center {
+  align-items: center;
+}
+
+
+/* ==================
+          列表
+ ==================== */
+
+.cu-list.menu {
+  display: block;
+  overflow: hidden;
+}
+
+.cu-list.menu>.cu-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100rpx;
+  background: #fff;
+  padding: 0 30rpx;
+}
+
+.cu-list.menu>.cu-item::after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.cu-list.menu.sm-border>.cu-item::after {
+  width: calc(200% - 120rpx);
+  left: 30rpx;
+}
+
+.cu-list.menu>.cu-item:last-child::after {
+  border: none;
+}
+
+.cu-list.menu>.cu-item.cur {
+  background-color: #fcf7e9;
+}
+
+.cu-list.menu-avatar>.cu-item {
+  padding-left: 140rpx;
+}
+
+.cu-list.menu-avatar>.cu-item .cu-avatar {
+  left: 30rpx;
+}
+
+.cu-list.menu>.cu-item .content {
+  line-height: 1.6em;
+  flex: 1;
+  font-size: 30rpx;
+}
+
+.cu-list.menu>.cu-item button.content {
+  padding: 0;
+  justify-content: flex-start;
+  background-color: transparent;
+}
+
+.cu-list.menu>.cu-item button.content::after {
+  display: none;
+}
+
+.cu-list.menu>.cu-item .content>text[class*="icon"] {
+  margin-right: 10rpx;
+  display: inline-block;
+  width: 1.6em;
+  text-align: center;
+}
+
+.cu-list.menu>.cu-item .content>image {
+  margin-right: 10rpx;
+  display: inline-block;
+  width: 1.6em;
+  height: 1.6em;
+  vertical-align: middle;
+}
+
+.cu-list.menu-avatar>.cu-item .action {
+  text-align: center;
+}
+
+.cu-list.menu-avatar>.cu-item .action view + view {
+  margin-top: 10rpx;
+}
+
+.cu-list.menu>.cu-item .action .cu-tag:empty {
+  right: 10rpx;
+}
+
+.cu-list.menu>.cu-item.arrow {
+  padding-right: 90rpx;
+}
+
+.cu-list.menu>.cu-item.arrow::before {
+  font-family: "iconfont";
+  display: block;
+  content: "\e6a3";
+  position: absolute;
+  font-size: 34rpx;
+  color: #aaa;
+  line-height: 30rpx;
+  height: 30rpx;
+  width: 30rpx;
+  text-align: center;
+  top: 0rpx;
+  bottom: 0;
+  right: 30rpx;
+  margin: auto;
+}
+
+.cu-list.menu>.cu-item .cu-avatar-group .cu-avatar {
+  border-color: #fff;
+}
+
+.cu-list.card-menu {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.cu-list.menu-avatar>.cu-item {
+  padding-left: 140rpx;
+  height: 140rpx;
+}
+
+.cu-list.menu-avatar>.cu-item>.cu-avatar {
+  position: absolute;
+  left: 30rpx;
+}
+
+.cu-list.menu-avatar.comment>.cu-item {
+  height: auto;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  padding-left: 120rpx;
+}
+
+.cu-list.menu-avatar.comment .cu-avatar {
+  align-self: flex-start;
+}
+
+.cu-list.menu>.cu-item .content .cu-tag.sm {
+  font-size: 16rpx;
+  line-height: 80%;
+  padding: 8rpx 6rpx 4rpx;
+  margin-top: -6rpx;
+}
+
+.cu-list.grid {
+  text-align: center;
+  background: #fff;
+}
+
+.cu-list.grid>.cu-item {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 0 30rpx;
+  position: relative;
+  transition-duration: 0s;
+}
+
+.cu-list.grid>.cu-item [class*="icon"] {
+  display: block;
+  width: 100%;
+  position: relative;
+  font-size: 48rpx;
+  margin-top: 20rpx;
+}
+
+.cu-list.grid>.cu-item text {
+  display: block;
+  color: #888;
+  margin-top: 10rpx;
+  line-height: 40rpx;
+  font-size: 26rpx;
+}
+
+.cu-list.grid>.cu-item .cu-tag {
+  left: 50%;
+  right: auto;
+  margin-left: 20rpx;
+}
+
+.cu-list.grid>.cu-item::after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cu-list.grid.col-3>.cu-item:nth-child(3n)::after {
+  border-right-width: 0px;
+}
+
+.cu-list.grid.col-4>.cu-item:nth-child(4n)::after {
+  border-right-width: 0px;
+}
+
+.cu-list.grid.col-5>.cu-item:nth-child(5n)::after {
+  border-right-width: 0px;
+}
+
+.cu-list.grid.no-border {
+  padding: 20rpx 10rpx;
+}
+
+.cu-list.grid.no-border>.cu-item {
+  padding-top: 10rpx;
+  padding-bottom: 20rpx;
+}
+
+.cu-list.grid.no-border>.cu-item::after {
+  border: none;
+}
+
+.cu-list>.cu-item {
+  transform: translateX(0rpx);
+  transition: all 0.6s ease-in-out 0s;
+}
+
+.cu-list>.cu-item .move {
+  display: flex;
+  width: 260rpx;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  transform: translateX(100%);
+}
+
+.cu-list>.cu-item.move-cur {
+  transform: translateX(-260rpx);
+}
+
+.cu-list>.cu-item .move view {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* pages/user/user.wxss */
+page{position: relative;background-color:#fff}
+.header{width: 100%; height: 300rpx; background-image: linear-gradient(to bottom,#ff6c00,#ff3d3d);flex-direction: column; color: #fff; align-items: center; justify-content: center; font-size: 26rpx;position:relative;}
+.header .system-notification{position: absolute;right: 30rpx;top: 46rpx;font-size:46rpx;}
+.header .system-notification .system-notification-text{position:absolute;top:-5rpx;right:-3rpx;font-size:18rpx;background-color:#fff;border-radius:50%;color:#ff3d3d;
+min-width:26rpx;height:26rpx;text-align:center;line-height:26rpx;}
+.header .avatar{width: 130rpx; height: 130rpx; border-radius: 50%; border: 6rpx solid rgba(255,255,255,.5)}
+.header text{font-size: 22rpx;}
+.header .name{margin: 13rpx 0 7rpx 0;}
+.user-list-warapper{position: absolute; top:400rpx; left: 50%; width: 710rpx; margin-left: -355rpx;}
+.user-list-warapper .item-box{margin-bottom: 30rpx; background-color: #fff; border-radius: 5px; box-shadow: 1px 2px 2px 1px #eee;}
+.amount{height: 150rpx; align-items: center;}
+.amount .amount-item{flex: 1 25%; text-align:  center; font-size: 24rpx; color: #555;}
+.amount .amount-item .count{margin-bottom: 17rpx; font-size: 32rpx; color:#ff3d3d;}
+.title-bar{padding:0 28rpx; height: 88rpx; align-items:  center; justify-content: space-between; border-bottom: 1px solid #f7f7f7; }
+.title-bar navigator{font-size: 25rpx; color:#999;}
+.list-wrapper{ flex-wrap: wrap;  align-items: center;}
+.list-wrapper .item{width: 25%; text-align: center;margin:20rpx 0;position: relative}
+.list-wrapper .item .iconfonts{font-size: 52rpx;}
+.list-wrapper .item .text{font-size: 24rpx; color:#555;margin-top:10rpx;}
+
+.orders image{width: 42rpx; height: 45rpx;}
+.orders .list-wrapper{height: 142rpx;}
+.service .list-wrapper{height:auto;padding:0rpx 0 30rpx;min-height:100rpx;}
+.icon-chongzhi{color: #ff3d3d;}
+.icon-wodejifen{color:#ffa800;}
+.icon-wodepintuan{color:#ff5959;}
+.icon-collect{color:#ff8920;}
+.icon-youhuijuan{color:#1dc7ad;}
+.icon-wodetuiguangren{color:#ff865c;}
+.icon-tongzhi{color:#20b3ff;}
+.icon-dizhiguanli{color:#43c885;}
+.icon-liaotian{color:#48c5ff;}
+.icon-custom-service{color:#acdc67;}
+.icon-erweima{color:#fa9552;}
+.icon-er{color: #20b3ff;}
+.contact-but{background-color:#ffffff;line-height:normal!important;}
+.contact-but::after{border:none;} 
+.item-span{min-width:26rpx;height:26rpx;border-radius:50rpx;background-color:#ff3d3d;color: #fff;display:block;font-size:20rpx;text-align:center;line-height:26rpx;position:absolute;right:46rpx;top:0;} 
+@import "/pages/home/home.wxss"; 

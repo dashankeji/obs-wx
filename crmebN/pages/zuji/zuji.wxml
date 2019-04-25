@@ -1,0 +1,33 @@
+<!--足迹标题加图标返回-->
+<view class="wrap_title bg-white">
+      <view class="cu-custom" style="height:{{CustomBar}}px;">
+        <view class="cu-bar fixed" style="height:{{CustomBar}}px;">
+          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>我的足迹</text>
+          </navigator>
+        </view>
+      </view>
+</view>
+<view class="wrap_seasonalMerchandise">
+    <view class="flex justify-between" style="padding:20rpx;flex-wrap: wrap">
+              <view class=" margin-bottom-sm" style="width:49%;box-shadow:0 0 5rpx #ccc;" wx:for="{{footprintList}}"  wx:key>
+                      <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none">
+                          <view class="wrap_imageOne" style="background-image:url({{item.image}});background-size:100% 100%"></view>
+                      </navigator>
+                      <view class='text-lg my_text_1 margin-top-xs'>
+                          <text class='text-black text-bold'>{{item.store_name}}</text>
+                      </view>
+                      <view class='basis-df text-xl text-end'>
+                                  <text class='text-red text-bold'>￥{{item.price}}</text>
+                      </view>
+                      <view class="flex margin-top-xs">
+                            <view class='basis-df text-xl text-end'>
+                                  <text class='text-bold'>销量: {{item.ficti+item.sales}}</text>
+                            </view>
+                            <view class='basis-df text-xl text-right' data-id='{{item.id}}' bindtap='deletefootprint'>
+                                  <text class='icon-shanchu text-gray text-bold'></text>
+                            </view>
+                      </view>
+              </view>
+    </view>
+</view>

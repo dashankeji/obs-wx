@@ -1,0 +1,71 @@
+<!--我的财富标题加图标返回-->
+<view class="wrap_title bg-white">
+      <view class="cu-custom" style="height:{{CustomBar}}px;">
+        <view class="cu-bar fixed" style="height:{{CustomBar}}px;">
+          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>我的财富</text>
+          </navigator>
+        </view>
+      </view>
+</view>
+<!---->
+<view class='header flex' style="background-image:url({{bannerImgData.url}});background-size:100% 100%">
+  <view class='system-notification iconfont icon-pinglun' bindtap='goNotification'><text class="system-notification-text" wx:if="{{userinfo.notice > 0}}">{{userinfo.notice}}</text></view>
+  
+  <image src='{{userinfo.avatar}}' class='avatar'></image>
+  <view class='name'>{{userinfo.nickname}}</view>
+  <!-- <text wx:if="{{userinfo.level==0}}">[普通用户]</text> -->
+</view>
+<!--订单详情-->
+<view class='user-list-warapper'>
+   <view class='item-box amount flex'>
+    <view class='amount-item' bindtap='money'>
+      <view class='count'>{{userinfo.now_money}}</view>
+      <view class='text' >账户余额</view>
+    </view>
+    <view class='amount-item' bindtap='collects'>
+      <view class='count'>{{userinfo.like ? userinfo.like : 0}}</view>
+      <view class='text' >收藏商品</view>
+    </view>
+  </view>
+
+<view class='item-box service'>
+    <view class='title-bar flex'>
+      <text>我的财富</text>
+    </view>
+    <view class='list-wrapper flex'>
+      <view class='item' bindtap='myextension' wx:if="{{userinfo.is_promoter && userinfo.statu == 1}}">
+        <navigator hover-class="none">
+          <view class='iconfonts icon-zizhutuiguang icon-tongzhi'></view>
+          <view class='text'>我的推广</view>
+        </navigator>
+      </view>
+      <view class='item' bindtap='myextension' wx:elif="{{userinfo.statu == 2}}">
+        <navigator hover-class="none">
+          <view class='iconfonts icon-zizhutuiguang icon-tongzhi'></view>
+          <view class='text'>我的推广</view>
+        </navigator>
+      </view>
+      <view class='item' bindtap='extension' wx:if="{{userinfo.is_promoter && userinfo.statu == 1}}">
+        <navigator hover-class="none">
+          <view class='iconfonts icon-renxiang icon-wodetuiguangren'></view>
+          <view class='text'>我的推广人</view>
+        </navigator>
+      </view>
+      <view class='item' bindtap='extension' wx:elif="{{userinfo.statu == 2}}">
+        <navigator hover-class="none">
+          <view class='iconfonts icon-renxiang icon-wodetuiguangren'></view>
+          <view class='text'>我的推广人</view>
+        </navigator>
+      </view>
+
+      <view class='item' wx:if="{{userinfo.is_promoter || userinfo.statu==2}}">
+        <navigator hover-class="none" url="/pages/promotion-card/promotion-card">
+          <view class='iconfonts icon-erweima icon-er'></view>
+          <view class='text'>推广二维码</view>
+        </navigator>
+      </view>
+      
+    </view>
+  </view>
+  </view>

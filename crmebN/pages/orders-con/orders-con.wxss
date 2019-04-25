@@ -1,0 +1,216 @@
+.cu-steps {
+  display: flex;
+}
+
+scroll-view.cu-steps {
+  display: block;
+  white-space: nowrap;
+}
+
+scroll-view.cu-steps .cu-item {
+  display: inline-block;
+}
+
+.cu-steps .cu-item {
+  text-align: center;
+  position: relative;
+  min-width: 100rpx;
+}
+
+.cu-steps .cu-item:not([class*="text-"]) {
+  color: #aaa;
+}
+
+.cu-steps .cu-item [class*="icon"], .cu-steps .cu-item .num {
+  display: block;
+  font-size: 40rpx;
+  line-height: 80rpx;
+}
+
+.cu-steps .cu-item::before, .cu-steps .cu-item::after,
+.cu-steps.steps-arrow .cu-item::before, .cu-steps.steps-arrow .cu-item::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 0px;
+  width: calc(100% - 80rpx);
+  border-bottom: 1px solid #ccc;
+  left: calc(0px - (100% - 100rpx) / 2);
+  top: 75rpx;
+  z-index: 0;
+}
+
+.cu-steps.steps-arrow .cu-item::before, .cu-steps.steps-arrow .cu-item::after {
+  content: "\e6a3";
+  font-family: 'iconfont';
+  height: 30rpx;
+  border-bottom-width: 0px;
+  line-height: 30rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  color: #ccc;
+}
+
+.cu-steps.steps-bottom .cu-item::before, .cu-steps.steps-bottom .cu-item::after {
+  bottom: 40rpx;
+  top: initial;
+}
+
+.cu-steps .cu-item::after {
+  border-bottom: 1px solid currentColor;
+  width: 0px;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.cu-steps .cu-item[class*="text-"]::after {
+  width: calc(100% - 80rpx);
+  color: currentColor;
+}
+
+.cu-steps .cu-item:first-child::before, .cu-steps .cu-item:first-child::after {
+  display: none;
+}
+
+.cu-steps .cu-item .num {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  line-height: 40rpx;
+  margin: 20rpx auto;
+  font-size: 24rpx;
+  border: 1px solid currentColor;
+  position: relative;
+  overflow: hidden;
+}
+
+.cu-steps .cu-item[class*="text-"] .num {
+  background-color: currentColor;
+}
+
+.cu-steps .cu-item .num::before, .cu-steps .cu-item .num::after {
+  content: attr(data-index);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  transition: all 0.3s ease-in-out 0s;
+  transform: translateY(0rpx);
+}
+
+.cu-steps .cu-item[class*="text-"] .num::before {
+  transform: translateY(-40rpx);
+  color: #fff;
+}
+
+.cu-steps .cu-item .num::after {
+  transform: translateY(40rpx);
+  color: #fff;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.cu-steps .cu-item[class*="text-"] .num::after {
+  content: "\e645";
+  font-family: 'iconfont';
+  color: #fff;
+  transform: translateY(0rpx);
+}
+
+.cu-steps .cu-item[class*="text-"] .num.err::after {
+  content: "\e646";
+}
+.cu-list-two.menu {
+  display: block;
+  overflow: hidden;
+}
+
+.cu-list-two+.cu-list {
+  margin-top: 30rpx;
+}
+
+.cu-list-two.menu>.cu-item {
+  position: relative;
+  display: flex;
+  min-height: 100rpx;
+  background: #fff;
+  padding: 30rpx 30rpx;
+}
+
+.cu-list-two.menu>.cu-item::after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.cu-list-two.menu>.cu-item:last-child::after {
+  border: none;
+}
+
+.cu-list-two.menu>.cu-item .content {
+  overflow:hidden;
+  line-height: 1.6em;
+  flex: 1;
+  font-size: 30rpx;
+}
+.cu-itemTwo::after{
+  content: "";
+  display: block;
+  position: absolute;
+  height: 10rpx;
+  width: 130rpx;
+  border-bottom: 1px solid #ccc;
+  left: 90%;
+  top: 45%;
+  z-index: 0;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.status-txt{margin-left: 36rpx; font-size: 32rpx;}
+.status-txt text{font-size: 26rpx;}
+.address{position: relative; padding: 35rpx 20rpx 35rpx 76rpx; background-color: #fff; font-size: 26rpx;}
+.address .iconfont{position: absolute; left: 20rpx; top: 50%; margin-top: -20rpx; font-size: 40rpx; color: #888;}
+.common-title{padding: 0 20rpx; height: 84rpx; line-height: 84rpx; border-bottom: 1px solid #efefef;}
+.text-wrapper{margin-top: 20rpx; background-color: #fff; padding-bottom: 22rpx;}
+.text-wrapper .item{font-size: 26rpx; padding: 0 20rpx; margin-top: 22rpx; align-items: center;}
+.text-wrapper .item text{color: #999;}
+.text-wrapper .item .tel{color: #ff7000; text-decoration: underline;}
+.text-wrapper .item .iconfont{font-size: 40rpx; color: #ff7000; margin-left: 10rpx;}
+.pro-list{margin-top: 20rpx; background-color: #fff;}
+.pro-list .list-wrapper{padding: 20rpx;}
+.pro-list .list-wrapper .wrapper{padding: 0px 20rpx 0; background-color: #fafafa;}
+.pro-list .list-wrapper .wrapper .item{position: relative; justify-content: space-between; border-bottom: 1px dashed #ddd; padding: 20rpx 0;}
+.pro-list .list-wrapper .wrapper .item:last-child{border-bottom: 0;}
+.pro-list .list-wrapper .wrapper .item image{width: 162rpx; height: 162rpx; }
+.pro-list .list-wrapper .wrapper .item .pro-info{display: flex; width: 495rpx; flex-direction: column;}
+.pro-list .list-wrapper .wrapper .item .pro-info .title{overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.pro-list .list-wrapper .wrapper .item .pro-info .res{overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-size: 26rpx; color: #999;}
+.pro-list .list-wrapper .wrapper .item .pro-info .price{color: #ff3d3d; font-size: 32rpx;}
+.pro-list .list-wrapper .wrapper .item .pro-info .price text{font-size: 24rpx;}
+.pro-list .list-wrapper .wrapper .item .pro-info .price .count{color: #333;text-align: right;}
+.assess-btn{position: absolute; right: 20rpx; bottom: 20rpx; width: 120rpx; height: 50rpx; line-height: 50rpx; text-align: center;  background-color: #ff7000; color: #fff; border-radius: 3px;}
+.assess-btn.off{background-color: #cecece;}
+.payment-info{padding:0 20rpx 30rpx; border-top: 1px solid #f7f7f7;}
+.payment-info .infos{margin-top: 15rpx; align-items: center; justify-content: space-between;}
+.payment-info .infos .count{color: #ff3d3d;}
+.all-pay{position: relative; background-color: #fff; padding: 0 20rpx; height: 90rpx; align-items: center; justify-content: space-between; border-top: 1px solid #efefef;}
+.all-pay .count{color: #ff3d3d;}
+.all-pay:after{ content: ''; position: absolute; right: 60rpx; top: -16rpx; width: 26rpx; height: 26rpx; background-color: #fff; transform: rotate(45deg); border-left:1px solid #efefef; border-top:1px solid #efefef;}
+.foot{position: fixed; left: 0; bottom: 0; display: flex; width: 100%; height: 100rpx; background-color: #fff; box-sizing: border-box; border-top: 1px solid #efefef; justify-content:flex-end; align-items: center; padding-right: 20rpx;}
+.foot view{width: 160rpx; height: 58rpx; line-height: 56rpx; text-align: center; box-sizing: border-box; border: 1px solid #999; color: #aaa; border-radius: 30px; font-size: 24rpx;}
+.foot view.pay-btn{background-color: #ff3d3d;border: 0; color: #fff;} 
+.delete-btn{margin-right: 20rpx;display:block;}
+@import "/pages/home/home.wxss";
+
+

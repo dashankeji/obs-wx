@@ -1,0 +1,47 @@
+ <view id="wrap">
+<!--收货地址标题加图标返回-->
+ <view class="wrap_title bg-white solid-bottom padding-bottom">
+      <view class="cu-custom" style="height:{{CustomBar}}px;">
+        <view class="cu-bar fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>地址管理</text>
+          </navigator>
+        </view>
+      </view>
+</view>
+<!--表单填写-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="cu-form-group">
+          <view class='title'>收货人:</view>
+          <input type='text' placeholder='请填写收货人姓名' placeholder-class='placeholder' name="name" value='{{userAddress.real_name}}' />
+      </view>
+      <view class="cu-form-group">
+          <view class='title'>手机号码:</view>
+          <input type='number' placeholder-class='placeholder' placeholder='请填写手机号码' name="phone" value='{{userAddress.phone}}' />
+      </view>
+      <view class="cu-form-group">
+          <view class='title'>选择地区</view>
+          <picker mode="region" bindchange="RegionChange" value="{{region}}">
+            <view class="picker">
+              {{region[1] ? region[0]+' ,'+region[1]+' , '+region[2] : "请选择"}}
+            </view>
+          </picker>
+        </view>
+      <view class="cu-form-group" style="border-bottom:1px solid #ddd">
+          <view class='title'>详细地址:</view>
+          <input type='text' placeholder-class='placeholder' placeholder="请填写详细地址" name="fulladdress" value='{{userAddress.detail}}'></input>
+      </view>
+      <view class="padding-top">
+          <button form-type="submit" class="text-center text-white text-xl" style="width:90%;margin:0 auto;border-radius:10px;background-color:red" formType="submit">保存              </button>
+      </view>
+      <!--<view class="padding-top-sm">
+          <button class="text-center bg-green text-white text-xl" style="width:90%;margin:0 auto;border-radius:10px" bindtap='getWxAddress'>使用微信地址                 </button>
+      </view>-->
+      <view class="padding-top-sm">
+         <navigator class="none" open-type="navigateBack" hover-class="none">
+             <button form-type="reset" class="text-center bg-grey light text-white text-xl" style="width:90%;margin:0 auto;border-radius:10px">取消           </button>
+          </navigator>
+      </view>
+</form>
+
+</view>

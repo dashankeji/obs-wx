@@ -1,0 +1,24 @@
+<view class="wrap_title bg-white">
+      <view class="cu-custom" style="height:{{CustomBar}}px;">
+        <view class="cu-bar fixed" style="height:{{CustomBar}}px;">
+          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>推广二维码</text>
+          </navigator>
+        </view>
+      </view>
+</view>
+<view class='promotion-card'>
+    <view class='title flex'>
+        <view class='line'></view>
+        <view class='name'>推荐小程序</view>
+        <view class='line'></view>
+    </view>
+    <view class='white-bg'>
+         <image src='{{userinfo.avatar}}' class='pic'></image>
+         <view class='white-name'>{{userinfo.nickname}}</view>
+         <view class='ewm'>
+             <image src='http://127.0.0.1/public/uploads/routine/code/2019/04/2.jpg'></image>
+         </view>
+         <view class='tip'>使用微信扫描二维码关注小程序</view>
+    </view>
+</view>

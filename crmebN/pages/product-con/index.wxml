@@ -1,0 +1,218 @@
+<!--商品详情标题加图标返回-->
+<view class="wrap_title bg-white">
+      <view class="cu-custom" style="height:{{CustomBar}}px;">
+        <view class="cu-bar fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+            <text class='icon-iconfontback' style="font-size:20px"></text> <text class='text-xxl text-bold'>商品详情</text>
+          </navigator>
+        </view>
+      </view>
+</view>
+<!--轮播-->
+<view class="wrap_swiper" style="position:relative;top:0;left:0;">
+      <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" bindchange="swiperChange" circular="true" autoplay="true" interval="5000" duration="500" current="{{currentSwiper}}">
+        <swiper-item wx:for="{{storeInfo.slider_image}}" wx:key>
+          <image src="{{url}}{{item}}"></image>
+        </swiper-item>
+      </swiper>
+      <!--重置小圆点的样式  -->
+      <view class="dots">  
+          <block wx:for="{{storeInfo.slider_image.length}}" wx:key>  
+              <view class="dot{{index == currentSwiper ? ' active' : ''}}"></view>  
+          </block>  
+      </view>  
+</view>
+
+<view class='pro-wrapper'>
+  <view class='pro-infos'>
+    <view class='title'>
+    {{storeInfo.store_name}}
+    <!--<view class="iconfont icon-fenxiang screen-shot" type="primary"  bindtap='listenerActionSheet'></view>-->
+    </view>
+    <action-sheet hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet" >
+      <action-sheet-item >
+          <button open-type="share" class='contact' >
+            <view class='iconn'></view>
+            发送给朋友
+          </button>
+          <button class='contact' bindtap='goPoster' >
+            <view class='iconn iconn1'></view>
+            生成海报
+          </button>
+          <!-- <view bindtap='goPoster' class='action-sheet'>
+            <view class='iconn iconn1'></view>
+            生成海报
+          </view> -->
+      </action-sheet-item>
+      <!--自动隐藏action-sheet-->
+      <!-- <action-sheet-cancel>取消</action-sheet-cancel> -->
+  </action-sheet>
+    <view class='price-wrapper flex'>
+      <view class='price'><text>￥</text>{{storeInfo.price}}</view>
+      <view class='price-two'><text>原价: {{storeInfo.ot_price}}</text></view>
+     <!-- <block wx:for="{{storeKeyWord}}" wx:if="{{index < 4}}">
+        <view class='small-txt red' wx:if="{{!index && item != ''}}">{{item}}</view>
+        <view class='small-txt lv' wx:if="{{index == 1}}">{{item}}</view>
+        <view class='small-txt chen' wx:if="{{index == 2}}">{{item}}</view>
+        <view class='small-txt red' wx:if="{{index == 3}}">{{item}}</view>
+      </block> -->
+    </view>
+    <view class='count-wrapper flex'>
+      <view>快递:￥{{storeInfo.postage}}</view>
+      <view>库存:{{storeInfo.stock}}{{storeInfo.unit_name}}</view>
+      <view>月销:{{storeInfo.ficti+storeInfo.sales}}{{storeInfo.unit_name}}</view>
+    </view>
+  </view>
+
+  <view class='block-bar selected' bindtap='getAttrInfo'>
+    <text class='title'>{{attr}}</text>
+    <text class='title'>规格 数量</text>
+    <text>{{attrValue}}</text>
+  </view>
+</view>
+
+<view class="padding-top">
+    <view class="bg-white">
+          <view class="padding-sm">
+              <view class="text-xxl padding-bottom">图文详情</view>
+              <view wx:for="{{description}}" wx:key>
+                  <image src="{{item}}" mode='widthFix' style="width:100%"></image>
+              </view>
+          </view>
+    </view>
+</view>
+
+<!--评论-->
+<view class="padding-top">
+      <view class="bg-white padding-sm">
+            <view class="flex justify-between">
+                <view class='content'>
+                  <text class='text-grey text-xl'>评论</text>
+                </view>
+                <view class='action'>
+                   发表<text class='text-grey text-xl icon-comment'></text>
+                </view>
+            </view>
+      </view>
+      <view class="cu-list-two menu">    
+            <view class="cu-item {{menuArrow?'arrow':''}}" wx:if="{{replyCount}}"> 
+                  <view class="cu-avatar-group">
+                        <view class="cu-avatar lg" style="background-image:url({{reply.avatar}});border-radius:50%;"></view>
+                  </view>
+                  <view class='content'>
+                      <view>
+                        <view class="flex justify-between">
+                               <view class='text-grey text-xl'>{{reply.nickname}}</view>
+                              <view class="">{{reply.add_time}}</view>
+                        </view>    
+                        <view class='start star{{reply.star}}'></view>
+                        <view class='text-grey'>{{reply.comment}}</view>
+                      </view>
+                  </view>
+            </view>
+      </view>
+     <navigator wx:if="{{replyCount > 0}}" hover-class="none" url="/pages/comment/comment?productId={{storeInfo.id}}"><view class="text-lg text-center bg-white padding">查看更多评价</view></navigator>
+</view>
+<!--猜你喜欢-->
+<view class="">
+    <view class="bg-white">
+          <view class="padding-sm">
+              <view class="text-xxl bg-white padding-bottom">猜你喜欢</view>
+              <view class="wrap_seasonalMerchandise" style="">
+                      <view class="flex solid-bottom justify-between" style="flex-wrap: wrap">
+                            <view style="width:49%;margin-bottom:15rpx" wx:for="{{likeData}}" wx:key>
+                                <image src="{{item.image}}"  style="width:100%;height:100px;"></image>
+                                <view class='text-xl'>
+                                    <text class='text-black text-bold'>{{item.store_name}}</text>
+                                </view>
+                                <view class='text-xl'>
+                                    <text class='text-black text-bold'>{{item.store_name}}</text>
+                                </view>
+                                <view class='text-xl'>
+                                    <text class='text-black text-bold'>￥{{item.price}}</text>
+                                </view>
+                            </view>
+          
+       </view>
+   </view>
+          </view>
+    </view>
+</view>
+
+<view style='height:130rpx;'></view>
+<view class='foot flex'>
+  <view  class='fn-btns flex'>
+    <view class='item' bindtap='goHomeClick'>
+      <view class='icon-shouye'><!--<span class='item-span'>{{CartCount}}</span>--></view>
+      <text>首页</text>
+    </view>
+    <view class='item' bindtap='goPhone'>
+      <view class='icon-kefu'></view>
+      <text>客服</text>
+    </view>
+    <view class='item' bindtap='setCollect'>
+      <view class='{{collect==true?"icon-stars":"icon-tuanduicankaoxian-"}}'></view>
+      <text>收藏</text>
+    </view>
+    <!--<view class='item' bindtap='getCar'>
+      <view class='iconfont icon-gouwuche'><span class='item-span'>{{CartCount}}</span></view>
+      <text>购物车</text>
+    </view>-->
+  </view>
+  <view class='btns-wrapper flex'>
+    <view class='buy-btn' bindtap='parameterShow'>加入购物车</view>
+    <view class='payment-btn' bindtap='goOrder'>立即购买</view>
+  </view>
+</view>
+<!--<view class='poster-pop' wx:if="{{posterImageStatus}}">
+   <image src='/images/poster-close.png' class='close' bindtap='posterImageClose'></image>
+   <image src='{{posterImage}}'></image>
+   <view class='save-poster' bindtap='savePosterPath'>保存到手机</view>
+</view>-->
+<view class='mask' wx:if="{{posterImageStatus}}"></view>
+<canvas class="canvas" canvas-id='myCanvas' wx:if="{{canvasStatus}}"></canvas>
+
+  <view class="model-bg {{show==true ? 'show':''}} {{prostatus==true ? 'show':''}}" bindtap='modelbg'></view>  
+<view class="model-proinfo {{prostatus==true ? 'show':''}}">
+  <view style="position:absolute;right:10rpx;top:0;width:10%;text-align:right" bindtap='modelbg'>X</view>
+  <view class='hd-wrapper'>
+    <image src='{{url}}{{productSelect.image}}'></image>
+    <view class='txt-info'>
+      <view class='title'>{{productSelect.store_name}}</view>
+      <view class='num flex'>
+          <view class='price'>￥{{productSelect.price}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='bd-wrapper'>
+  <block wx:for="{{productAttr}}">
+    <view class='parameter-item'>
+      <view class='title-bar'>{{item.attr_name}}</view>
+      <view class='item-wrapper'>
+        <block wx:for="{{item.attr_value}}" wx:for-item="items">
+          <view data-key="{{items.attr}}" class='item {{items.check?"sizecolor":""}}' bindtap='tapsize'>{{items.attr}}</view>
+        </block>
+      </view>
+    </view>
+    </block>
+  </view>
+  <view class='count-box flex justify-between'>
+    数量
+    <view class='count-wrappers flex'>
+        <text data-index="{{index}}" bindtap="bindMinus" class='{{minusStatus}}'>-</text>
+        <input class='num' type="number" value='{{num}}' bindblur='setNumber'/>
+        <!-- <text class='num'>{{num}}</text> -->
+        <text class='add' data-index="{{index}}" bindtap="bindPlus">+</text>
+    </view>
+    <view class="text-red">剩余：{{productSelect.stock}}</view>
+  </view>
+  <view style='height:100rpx;'></view>
+  <form bindsubmit="subBuy" report-submit='true'> 
+  <button class='foot-wrapper' form-type='submit'>确定</button>  
+    <!-- <view class='foot-wrapper' bindtap='subBuy'>确定</view> -->
+  </form>
+</view> 
+<import src="/wxParse/wxParse.wxml"/>
+<view class="view" style=" top:{{top}}px;" catchtouchmove="setTouchMove" bindtap='goScrollTop'>
+     <view class="icon-top"></view>
+</view>

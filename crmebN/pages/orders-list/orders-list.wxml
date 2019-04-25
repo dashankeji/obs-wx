@@ -1,0 +1,81 @@
+<!--订单列表标题加图标返回-->
+<view class="wrap_title bg-white">
+      <view class="cu-custom" style="height:{{CustomBar}}px;">
+        <view class="cu-bar fixed" style="height:{{CustomBar}}px;">
+          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>订单列表</text>
+          </navigator>
+        </view>
+      </view>
+</view>
+<view class="head">
+  <input placeholder='输入订单号' value="{{search}}" confirm-type="search" bindconfirm="searchSubmit" bindinput="searchInput"></input>
+  <view class='iconfont icon-xiazai5'></view>
+</view>
+<view class='menu flex'>
+  <view class='item {{nowstatus == "" ? "on" : ""}}' data-show="" bindtap="statusClick">全部</view>
+  <view class='item {{nowstatus == "0" ? "on" : ""}}'  data-show="0" bindtap="statusClick">待付款</view>
+  <view class='item {{nowstatus == "1" ? "on" : ""}}'  data-show="1" bindtap="statusClick">待发货</view>
+  <view class='item {{nowstatus == "2" ? "on" : ""}}'  data-show="2" bindtap="statusClick">待收货</view>
+  <view class='item {{nowstatus == "3" ? "on" : ""}}'  data-show="3" bindtap="statusClick">待评价</view>
+</view>
+<view class='orders-list'>
+  <block wx:for="{{orderlist}}">
+      <view class='items'>
+        <view class='numbers flex'>
+            <view><text>订单号</text>：{{item.order_id}}</view>
+            <icon wx:if="{{item._status._type == 4}}" class='iconfont icon-shanchu del' bindtap='delOrder' data-uni='{{item.order_id}}'></icon>
+             <navigator hover-class="none" url='/pages/orders-con/orders-con?order_id={{item.order_id}}'>
+                 <view class='buypays'>订单详情</view>
+             </navigator>
+        </view>
+        <view class='info-list'>
+          <block  wx:for="{{item.cartInfo}}">
+               <view class='pro-item flex'>
+                <view class='wrapper flex'>
+                  <image src='{{url}}{{item.productInfo.image}}'></image>
+                  <view class='item-info flex'>
+                      <view style="flex:1">
+                          <view class='title'>{{item.productInfo.store_name}}</view>
+                          <view class='title' style="color:#999" wx:if="{{item.productInfo.attrInfo}}">{{item.productInfo.attrInfo.suk}}</view>
+                      </view>
+                      <view class='price'>
+                          <view><text>￥</text>{{item.productInfo.price}}</view>
+                          <view class='count text-right'>X{{item.cart_num}}</view>
+                      </view>       
+                  </view>
+                </view>  
+              </view>
+          </block>
+        </view>
+        <view class='items'>
+            <view class='numbers flex'>
+                <view class="my_text_1" style="width:73%;height:100%"><text>下单时间</text>：{{item.add_time}}</view>
+                <view wx:if="{{item._status._type == 0}}" class='text-red'>状态: <text>待付款</text></view>
+                <view wx:elif="{{item._status._type == 1}}" class='text-red'>状态: <text>待发货</text></view>
+                <view wx:elif="{{item._status._type == 2}}" class='text-red'>状态: <text>待收货</text></view>
+                <view wx:elif="{{item._status._type == 3}}" class='text-red'>状态: <text>待评价</text></view>
+                <view wx:elif="{{item._status._type == 4}}" class='text-red'>状态: <text>已完成</text></view>
+            </view>
+        </view>
+        <view class='pay-status flex'>
+          <view class='left-wrapper'>
+             <view class='all-price'>合计: <text style="font-size:37rpx">￥{{item.pay_price}}</text><text class='youfei'>（邮费￥{{item.pay_postage
+}}）</text></view> 
+          </view>
+          <view class='right-wrapper'>
+              <view wx:if="{{item._status._type == 0}}"  class="flex">
+                  <view class='buypay-two' style="margin-right:10rpx"  bindtap='delOrder' data-uni='{{item.order_id}}'>取消订单</view>
+                  <navigator hover-class="none" url='/pages/orders-con/orders-con?order_id={{item.order_id}}' class='buypay'>立即支付</navigator> 
+              </view>
+              <navigator hover-class="none" url='/pages/orders-con/orders-con?order_id={{item.order_id}}' wx:elif="{{item._status._type == 1}}" class='buypay kuang'>查看详情</navigator>
+              <navigator hover-class="none" url='/pages/logistics/logistics?orderId={{item.order_id}}' wx:elif="{{item._status._type == 2 && item.delivery_type == 'express'}}" class='buypay kuang'>查看物流</navigator>
+               <navigator hover-class="none" url='/pages/orders-con/orders-con?order_id={{item.order_id}}' wx:elif="{{item._status._type == 3}}" class='buypay'>去评价</navigator>  
+              <navigator hover-class="none" url='/pages/orders-con/orders-con?order_id={{item.order_id}}' wx:elif="{{!item.seckill_id && !item.bargain_id && !item.combination_id && item._status._type == 4}}" class='buypay'>再次购买</navigator> 
+          </view>
+        </view>
+      </view>
+  </block>
+  <view class='loading flex'><icon class='iconfont icon-jiazaizhong loadingpic' hidden='{{hidden}}'></icon>{{title}}</view>
+</view>
+<include src="/pages/home/home.wxml"/>

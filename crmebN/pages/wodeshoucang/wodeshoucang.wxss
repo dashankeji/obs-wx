@@ -1,0 +1,84 @@
+page {
+  background-color: #f4f4f4;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.text-fff{
+  color: #707271;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.cu-list-two.menu {
+  display: block;
+  overflow: hidden;
+}
+
+.cu-list-two {
+  border-bottom: 1rpx solid #ddd;
+}
+
+.cu-list-two.menu>.cu-item {
+  position: relative;
+  display: flex;
+  min-height: 100rpx;
+  background: #fff;
+  padding: 30rpx 30rpx;
+}
+
+.cu-list-two.menu>.cu-item::after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.cu-list-two.menu>.cu-item:last-child::after {
+  border: none;
+}
+
+.cu-list-two.menu>.cu-item .content {
+  overflow:hidden;
+  line-height: 1.6em;
+  flex: 1;
+  font-size: 30rpx;
+}
+
+.container{
+    display: flex;
+    background-color: #fff;
+    min-height: 100%;
+    padding: 30rpx;
+}
+
+.fb-type{
+  height: 66rpx;
+  width: 100%;
+  background: #f4f4f4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+}
+
+.fb-type .type-label{
+  height: 36rpx;
+  flex: 1;
+  color: #333;
+  font-size: 28rpx;
+}
+
+

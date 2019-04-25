@@ -1,0 +1,3 @@
+page{background-color: #fff}.loading-pic{position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff;}
+.loading-pic image{width:459rpx;height:131.5rpx;position:fixed;top:50%;left:50%;margin-left:-229.5rpx;margin-top:-65.75rpx;}
+.loading-pic view{width:190rpx;height:190rpx;position:fixed;top:68%;left:52%;margin-left:-95rpx;margin-top:-95rpx;}

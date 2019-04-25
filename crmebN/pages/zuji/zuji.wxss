@@ -1,0 +1,17 @@
+/* pages/zuji/zuji.wxss */
+.basis-df {
+  flex-basis: 50%;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.wrap_imageOne{
+  width: 100%;
+  height: 280rpx;
+  background-size:90% 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #ccc;
+}

@@ -1,0 +1,19 @@
+.justify-between {
+  justify-content: space-between;
+}
+.address_ul{margin-bottom:150rpx;}
+.address_li{width:100%;color:#333333;background-color:#ffffff;margin-bottom:20rpx;font-size:27rpx;}
+.addressx{padding:0 20rpx 37rpx 20rpx;border-bottom:1px solid #EEEEEE;}
+.addressName{padding:38rpx 0 17rpx 0;}
+.addressphone{margin-left:45rpx;}
+.addressLock,.addressName{width:710rpx;}
+.addressc{justify-content:space-between;padding:0 20rpx;height:95rpx;line-height:95rpx;}
+.Choice{width:43rpx;height:43rpx;border-radius:50%;background-color:#ffffff;font-size:27rpx;color:#ffffff;display:inline-block;text-align:center;line-height:43rpx;margin-right:21rpx;margin-top:22rpx;border:1rpx solid #DEDEDE;}
+.active{background-color:#FF3D3D;border:1rpx solid #FF3D3D;}
+.Maddress{font-size:26rpx;}
+.edit,.del{width:112rpx;height:54rpx;border:1rpx solid #999999;border-radius:15rpx;text-align:center;line-height:54rpx;display:inline-block;font-size:24rpx;}
+.del{margin-left:20rpx;}
+.footer{width:100%;height:100rpx;line-height:100rpx;font-size:30rpx;
+text-align:center;color:#ffffff;background-color:#eb4e2b;position:fixed;bottom:0;}
+.footer .system-address{width:50%;float:left;}
+.footer .weixin-address{width:50%;float:right;background-color:#f3b23e}
