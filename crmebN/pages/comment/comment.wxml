@@ -27,6 +27,10 @@
           <view class='li-time'><text>{{item.add_time}}</text>
            <text>{{item.suk}}</text> 
           </view>
+           <block wx:if="{{item.merchant_reply_content}}">
+              <view class='li-time'>回复: <text>{{item.merchant_reply_content}}</text></view>
+              <view class='li-time'>回复时间: <text>{{item.merchant_reply_time}}</text></view>
+          </block>
       </view>
      
    </view>

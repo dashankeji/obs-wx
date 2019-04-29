@@ -49,13 +49,13 @@
       <view class='item' bindtap='extension' wx:if="{{userinfo.is_promoter && userinfo.statu == 1}}">
         <navigator hover-class="none">
           <view class='iconfonts icon-renxiang icon-wodetuiguangren'></view>
-          <view class='text'>我的推广人</view>
+          <view class='text'>我的团队</view>
         </navigator>
       </view>
       <view class='item' bindtap='extension' wx:elif="{{userinfo.statu == 2}}">
         <navigator hover-class="none">
           <view class='iconfonts icon-renxiang icon-wodetuiguangren'></view>
-          <view class='text'>我的推广人</view>
+          <view class='text'>我的团队</view>
         </navigator>
       </view>
 

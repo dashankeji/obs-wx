@@ -12,7 +12,7 @@
 <view class="wrap_swiper" style="position:relative;top:0;left:0;">
       <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" bindchange="swiperChange" circular="true" autoplay="true" interval="5000" duration="500" current="{{currentSwiper}}">
         <swiper-item wx:for="{{storeInfo.slider_image}}" wx:key>
-          <image src="{{url}}{{item}}"></image>
+          <image src="{{url}}{{item}}" mode="aspectFill"></image>
         </swiper-item>
       </swiper>
       <!--重置小圆点的样式  -->
@@ -25,7 +25,7 @@
 
 <view class='pro-wrapper'>
   <view class='pro-infos'>
-    <view class='title'>
+    <view class='title text-xl'>
     {{storeInfo.store_name}}
     <!--<view class="iconfont icon-fenxiang screen-shot" type="primary"  bindtap='listenerActionSheet'></view>-->
     </view>
@@ -107,6 +107,15 @@
                         </view>    
                         <view class='start star{{reply.star}}'></view>
                         <view class='text-grey'>{{reply.comment}}</view>
+                        <view class="text-grey" wx:if="{{reply.merchant_reply_content}}">
+                            <view class='txt-msg'>
+                                回复:  {{reply.merchant_reply_content}}
+                            </view>
+                            <view class='time-bar flex justify-between'>
+                                <view style='margin-bottom:0'>回复时间:</view>
+                                <view>{{reply.merchant_reply_time}}</view>
+                            </view>
+                        </view>
                       </view>
                   </view>
             </view>
@@ -213,6 +222,6 @@
   </form>
 </view> 
 <import src="/wxParse/wxParse.wxml"/>
-<view class="view" style=" top:{{top}}px;" catchtouchmove="setTouchMove" bindtap='goScrollTop'>
+<view class="view" catchtouchmove="setTouchMove" bindtap='goScrollTop'>
      <view class="icon-top"></view>
 </view>

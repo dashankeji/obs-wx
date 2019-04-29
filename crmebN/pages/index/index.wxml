@@ -7,13 +7,14 @@
 
 <view class="flex">
     <view style='flex-basis: 20%;'>
-          <image src="http://127.0.0.3/public/uploads/attach/2019/04/24/5cbfc73b976a8.png" mode='aspectFill' style="width:"></image>
+          <image src="http://127.0.0.3/public/uploads/attach/2019/04/24/5cbfc73b976a8.png" mode='aspectFill' style="width:100%"></image>
     </view>
-    <view style='flex-basis: 60%;'>2
+    <view class="justify-between" style='flex-basis: 60%;display:flex;flex-direction:column;'>
        
          <view>222222</view>
+         <view>222222</view>
     </view>
-    <view style='flex-basis: 20%;'>3</view>
+    <view style='flex-basis: 20%;display:flex;align-items:center'>3</view>
 </view>
 
 <!--搜索-->

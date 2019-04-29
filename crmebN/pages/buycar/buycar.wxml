@@ -6,15 +6,13 @@
       </view>-->
   <!--购物车标题加图标返回-->
 <view class="wrap_title">
-      <view class="cu-custom bg-white" style="height:{{CustomBar}}px;">
-        <view class="cu-bar fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
-          <view class='action'>
-               <text class='text-xxl text-bold'>购物车</text>
-          </view>
+      <view class="cu-custom" style="height:{{CustomBar}}px;">
+        <view class="cu-bar fixed bg-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">  
+              <text class='text-xxl text-bold margin-left-sm'>购物车</text>
         </view>
       </view>
 </view>
-  <view class='car-list'>
+  <view class='car-list' style="margin-top:{{StatusBar}}px;">
     <block wx:for="{{cartList}}" wx:key>
         <view class='list-item flex'>
           <view class='select-btn flex' data-index='{{index}}' bindtap='switchSelect'>
@@ -22,7 +20,10 @@
             <checkbox value="{{index}}" checked="{{item.checked}}" />
           </label>
         </view>
-        <view class='picture'><image src='{{url}}{{item.productInfo.image}}'></image></view>
+        <view class='picture'>
+            <!--<image src='{{url}}{{item.productInfo.image}}'></image>-->
+            <view style='background-image:url({{url}}{{item.productInfo.image}});width:206rpx;height:206rpx;background-size:cover;background-position:center'> </view>
+        </view>
         <view class='pro-info flex'>
            <view class="flex" style="justify-content:space-between">
               <view class='pro-title'>{{item.productInfo.store_name}}</view> 
@@ -35,7 +36,7 @@
             <view class="flex" style="justify-content:space-between">
                <view class="flex">
                     <text class="text-xl solid padding-tb-lr {{minusStatus}}" bindtap='numDescClick' data-index="{{index}}">-</text>
-                    <input class='solid text-bold text-center' data-item='{{index}}' type="number" value='{{item.cart_num}}' bindblur='setNumber' style="width:60rpx"/>
+                    <input class='solid text-bold text-center' data-item='{{index}}' type="number" value='{{item.cart_num}}' bindblur='setNumber' style="width:60rpx;height:100%"/>
                     <text class="text-xl padding-tb-lr solid text-bold" bindtap="numAddClick" data-index="{{index}}">+</text>
                 </view>
                 <view class="flex" style="align-items:center">
