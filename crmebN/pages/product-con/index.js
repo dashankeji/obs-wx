@@ -48,9 +48,17 @@ Page({
         CartCount:0,
         status:0,
         actionSheetHidden:true,
+        offset: 1,
+        IconBack: false,
         TabDate: {
           0: [
           ]}
+    },
+    shangPinCodeClick: function(){
+      wx.navigateTo({
+        url: '/pages/shangPinCode/index?id=' + this.data.storeInfo.id + '&imgUrl=' + this.data.storeInfo.slider_image[0] + '&store_name=' + this.data.storeInfo.store_name + '&price=' + this.data.storeInfo.price + '&ot_price=' + this.data.storeInfo.ot_price
+      });
+     // console.log(this.data.storeInfo.slider_image[0]);
     },
     goScrollTop: function(){
       wx.pageScrollTo({
@@ -107,13 +115,23 @@ Page({
     onLoad: function (options) {
         // console.log(options);
         // return ;
-        app.globalData.openPages = '/pages/product-con/index?id=' + options.id;
+        var store_id = 0;
+        if (options.id) {
+          store_id = options.id;
+        } else {
+          store_id = decodeURIComponent(options.scene);
+          this.setData({
+            IconBack: true,
+          });
+        };
+
+        app.globalData.openPages = '/pages/product-con/index?id=' + store_id;
         app.setBarColor();
         var that = this;
         app.setUserInfo();
         that.getCartCount();
         that.setData({
-            id: options.id
+           id: store_id
         })
         var header = {
             'content-type': 'application/x-www-form-urlencoded',
@@ -147,11 +165,11 @@ Page({
                         [store_name]: res.data.data.storeInfo.store_name,
                         [price]: res.data.data.storeInfo.price,
                         [unique]: ''
-                    })
-                  
+                    });
+                 
                    /* that.downloadFilestoreImage();
                     that.downloadFilePromotionCode();*/
-                    //that.likeDataFun();
+                    that.likeDataFun();
                     //WxParse.wxParse('description', 'html', that.data.description, that, 0);
                 }else{
                     wx.showToast({
@@ -165,7 +183,7 @@ Page({
                 }
             }
         });
-        wx.request({
+        wx.request({      //记录在足迹表
           url: app.globalData.url + '/routine/auth_api/InterProductFootprint?uid=' + app.globalData.uid,
           data:{product_id: options.id},
           method: 'GET',
@@ -183,13 +201,15 @@ Page({
     };
     var that = this;
     wx.request({
-      url: app.globalData.url + '/routine/auth_api/index?uid=' + app.globalData.uid,
+      url: app.globalData.url + '/routine/auth_api/getProductFootprint?uid=' + app.globalData.uid,
+      data: { limit: 8, offset: 0 },
       method: 'POST',
       header: header,
       success: function (res) {
+
         that.setData({
-          likeData: res.data.data.like
-        });
+          likeData: res.data.data
+        })
       }
     })
   },
@@ -896,7 +916,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+      this.setData({
+        IconBack: false,
+      });
     },
 
     /**
@@ -924,7 +946,43 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
+      var that = this;
+      var limit = 8;
+      var offset = limit * that.data.offset++;
 
+      var header = {
+        'content-type': 'application/x-www-form-urlencoded',
+      };
+      wx.request({
+        url: app.globalData.url + '/routine/auth_api/getProductFootprint?uid=' + app.globalData.uid,
+        data: { limit: limit, offset: offset },
+        method: 'POST',
+        header: header,
+        success: function (res) {
+          var len = res.data.data.length;
+
+          if (len < 1) {
+            --that.data.offset;
+            wx.showToast({
+              title: '数据已经加载到尽头了',
+              icon: 'none',
+              duration: 2000
+            });
+            return false;
+          };
+          that.data.likeData = that.data.likeData.concat(res.data.data);
+          that.setData({
+            likeData: that.data.likeData
+          });
+
+        },
+        fail: function (res) {
+          console.log('submit fail');
+        },
+        complete: function (res) {
+          console.log('submit complete');
+        }
+      });
     },
 
     /**

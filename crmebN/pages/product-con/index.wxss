@@ -1,17 +1,18 @@
 .price-two{
    position: relative;
-   margin-left: 88rpx;
    color: #ccc;
    font-size: 25rpx;
+   width:156rpx;
+   height:34rpx;
 }
 
 .price-two::after{
   content: "";
   position: absolute;
   top:18rpx;
-  left: 60rpx;
+  left: 70rpx;
   display: block;
-  width:66rpx;
+  width:70rpx;
   height:5rpx;
   background-color: #ccc;
 }
@@ -19,7 +20,10 @@
 .justify-between {
   justify-content: space-between;
 }
-
+.wrap_imageTwo{
+  width: 350rpx;
+  height: 350rpx;
+}
 .cu-list-two.menu {
   display: block;
   overflow: hidden;

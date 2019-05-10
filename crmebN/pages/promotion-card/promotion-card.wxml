@@ -1,24 +1,37 @@
-<view class="wrap_title bg-white">
-      <view class="cu-custom" style="height:{{CustomBar}}px;">
-        <view class="cu-bar fixed" style="height:{{CustomBar}}px;">
-          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>推广二维码</text>
-          </navigator>
-        </view>
-      </view>
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+          <text class='icon-iconfontback' style="font-size:20px"></text><text class='text-xxl text-bold'>我的二维码</text>
+    </navigator>
+  </view>
 </view>
+<view style="margin-top:{{StatusBar}}px;"></view>
 <view class='promotion-card'>
     <view class='title flex'>
         <view class='line'></view>
         <view class='name'>推荐小程序</view>
         <view class='line'></view>
     </view>
-    <view class='white-bg'>
+    <!--<view class='white-bg'>
          <image src='{{userinfo.avatar}}' class='pic'></image>
          <view class='white-name'>{{userinfo.nickname}}</view>
          <view class='ewm'>
-             <image src='http://127.0.0.1/public/uploads/routine/code/2019/04/2.jpg'></image>
+             <image src='{{code}}'></image>
          </view>
          <view class='tip'>使用微信扫描二维码关注小程序</view>
-    </view>
+    </view>-->
 </view>
+
+<view id="canvas-container" class="poste_box">
+    <canvas canvas-id="myCanvas" style="width:100%;height:{{QrCodeHeight}}rpx;" bindtap='canvasPreviewClick'></canvas>
+</view>
+
+<view style='width:90%;margin:20rpx auto;padding-bottom:10rpx;display:flex;justify-content: space-between;'>
+    <view bindtap='previewImageClick' style='width:40%;padding:20rpx;color:#fff;text-align:center;background-color:orange;font-size:32rpx'>制作二维码图片</view>
+    <view bindtap='savaImageClick' style='width:40%;padding:20rpx;color:#fff;text-align:center;background-color:orange;font-size:32rpx'>保存图片</view>
+</view>
+<block wx:if="{{openImageSettingFlag}}">
+<button type='primary' open-type="openSetting" lang="zh_CN" style="width:50%;color:#fff">
+相册授权
+</button>
+</block>

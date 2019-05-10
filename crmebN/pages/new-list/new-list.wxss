@@ -1,5 +1,5 @@
 .product{width:100%;}
-.header{height:95rpx;background-color:#ffffff;padding:0 20rpx;position:relative;}
+.header{height:95rpx;background-color:#ffffff;padding:0 30rpx;position:relative;}
 .header-input{height:60rpx;width:570rpx;border:1rpx solid #EEEEEE;line-height:60rpx;justify-content:space-between;margin-top:17.5rpx;border-radius:15rpx;}
 .input-text{width:578rpx;height:100%;}
 .placeholder{color:#AAAAAA;}

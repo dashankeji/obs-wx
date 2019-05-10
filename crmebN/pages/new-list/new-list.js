@@ -37,7 +37,8 @@ Page({
     prostatus: false,
     sorter: [],
     productid: '',
-    CartCount: ''
+    CartCount: '',
+    GbInputValue: '',
   },
   setNumber: function (e) {
     var that = this;
@@ -278,6 +279,31 @@ Page({
     that.setData({ ficti: '' })
     that.setData({ news: news })
     that.getProductList();
+  },
+  blurEvent: function(e){
+    this.data.GbInputValue = e.detail.value;
+  },
+  submitTwo: function(){
+    var that = this;
+    var $search = that.data.GbInputValue;
+
+    wx.request({
+      url: app.globalData.url + '/routine/auth_api/store?uid=' + app.globalData.uid,
+      data: { value: $search },
+      method: 'GET',
+      success: function (res) {
+        if (res.data.code == 200) {
+          that.setData({
+            Arraylike: res.data.data
+          })
+        } else {
+          that.setData({
+            Arraylike: []
+          })
+        }
+      }
+
+    })
   },
   searchSubmit: function (e) {
     var that = this;

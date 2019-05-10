@@ -29,7 +29,7 @@ App({
     openPages:'',
     spid:0,
     urlImages: '',
-    url: 'http://127.0.0.1'
+    url: 'https://obs.largehill.net'
   },
   getRoutineStyle:function(){
     var that = this;

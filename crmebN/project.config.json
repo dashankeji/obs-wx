@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -10,7 +10,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.2",
-	"appid": "wxc71989f50faf8ac7",
+	"appid": "wxcdf6edb1ac597bad",
 	"projectname": "shopcrmeb",
 	"condition": {
 		"search": {

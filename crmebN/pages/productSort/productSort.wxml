@@ -19,12 +19,13 @@
                 </view>
                 <view class='bg-white' style="padding:2%"></view>
                 <view class='basis-lg radius text-xl bg-white cu-load'>
-                      <view  class="text-left solid-bottom">{{title}}</view>
+                      <view class="solid-bottom" style="text-align: right;padding-right: 45rpx;">{{title}}</view>
                       <scroll-view
                                 scroll-y
                                 bindscrolltoupper="upper"
                                 bindscrolltolower="lower"
                                 bindscroll="scroll"
+                                style="height:{{second_height}}px"
                                 scroll-top="{{scrollTop}}"
                               >
                                   <view class="cu-list-two text-left menu">
@@ -50,7 +51,7 @@
                                       <view class='loading flex'><icon class='iconfont icon-jiazaizhong loadingpic'></icon>加载中</view>
                                  </block>
                                  <block wx:else>
-                                      <view class='loading flex'>已显示完毕</view>
+                                      <view class='loading flex' style="font-size:27rpx;">已显示完毕</view>
                                  </block>
                       </scroll-view>
                 </view>

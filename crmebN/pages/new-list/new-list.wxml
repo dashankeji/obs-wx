@@ -12,13 +12,13 @@
     <view class='header flex'>
        <form bindsubmit="searchSubmit" report-submit='true'>
            <view class='header-input flex'>
-              <input type='text' placeholder='请输入商品关键词' class='input-text' placeholder-class='placeholder' bindconfirm="searchSubmit" confirm-type='search' name="search"></input>
+              <input type='text' placeholder='请输入商品关键词' class='input-text' placeholder-class='placeholder' bindconfirm="searchSubmit" confirm-type='search' name="search" bindblur="blurEvent"></input>
            </view>
        </form>
-       <view style="line-height:100rpx;display:flex;margin-left:10rpx"><view class='icon-sousuo text-xxl'></view>搜索</view>
+       <view style="line-height:100rpx;display:flex;margin-left:10rpx" bindtap='submitTwo'><view class='icon-sousuo text-xxl'></view>搜索</view>
     </view>
     <view class='nav flex'>
-       <view data-act='4' class='nav-li nav-total' bindtap='sort'><view class='total'>{{total}}<text class="icon-jiantouarrow486 sort-x {{active==0?'nav-active':''}}" style="margin-top:-9rpx;right:0"></text></view> </view>
+       <view data-act='4' class='nav-li nav-total' bindtap='sort'><view class='total' style=''>{{total}}</view><text class="icon-jiantouarrow486 sort-x {{active==0?'nav-active':''}}" style="margin-top:-9rpx;"></text></view>
       <view data-act='2' class='nav-li' bindtap='navactive1'>销量
        <text class='icon-jiantouarrow486 sort-x {{active==2?"nav-active":""}}' style="margin-top:-9rpx"></text>
       </view>

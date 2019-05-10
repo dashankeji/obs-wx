@@ -3,7 +3,10 @@
       <view class="cu-custom" style="height:{{CustomBar}}px;">
         <view class="cu-bar fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
           <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-            <text class='icon-iconfontback' style="font-size:20px"></text> <text class='text-xxl text-bold'>商品详情</text>
+             <block wx:if="{{!IconBack}}">
+               <text class='icon-iconfontback' style="font-size:20px"></text>
+             </block>
+               <text class='text-xxl text-bold'>商品详情</text>
           </navigator>
         </view>
       </view>
@@ -29,27 +32,11 @@
     {{storeInfo.store_name}}
     <!--<view class="iconfont icon-fenxiang screen-shot" type="primary"  bindtap='listenerActionSheet'></view>-->
     </view>
-    <action-sheet hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet" >
-      <action-sheet-item >
-          <button open-type="share" class='contact' >
-            <view class='iconn'></view>
-            发送给朋友
-          </button>
-          <button class='contact' bindtap='goPoster' >
-            <view class='iconn iconn1'></view>
-            生成海报
-          </button>
-          <!-- <view bindtap='goPoster' class='action-sheet'>
-            <view class='iconn iconn1'></view>
-            生成海报
-          </view> -->
-      </action-sheet-item>
-      <!--自动隐藏action-sheet-->
-      <!-- <action-sheet-cancel>取消</action-sheet-cancel> -->
-  </action-sheet>
-    <view class='price-wrapper flex'>
+
+    <view class='price-wrapper flex justify-between'>
       <view class='price'><text>￥</text>{{storeInfo.price}}</view>
       <view class='price-two'><text>原价: {{storeInfo.ot_price}}</text></view>
+      <view class='' bindtap='shangPinCodeClick'><text class="icon-erweima" style="font-size:28rpx">商品码</text></view>
      <!-- <block wx:for="{{storeKeyWord}}" wx:if="{{index < 4}}">
         <view class='small-txt red' wx:if="{{!index && item != ''}}">{{item}}</view>
         <view class='small-txt lv' wx:if="{{index == 1}}">{{item}}</view>
@@ -89,9 +76,9 @@
                 <view class='content'>
                   <text class='text-grey text-xl'>评论</text>
                 </view>
-                <view class='action'>
+                <!--<view class='action'>
                    发表<text class='text-grey text-xl icon-comment'></text>
-                </view>
+                </view>-->
             </view>
       </view>
       <view class="cu-list-two menu">    
@@ -128,21 +115,31 @@
           <view class="padding-sm">
               <view class="text-xxl bg-white padding-bottom">猜你喜欢</view>
               <view class="wrap_seasonalMerchandise" style="">
-                      <view class="flex solid-bottom justify-between" style="flex-wrap: wrap">
-                            <view style="width:49%;margin-bottom:15rpx" wx:for="{{likeData}}" wx:key>
-                                <image src="{{item.image}}"  style="width:100%;height:100px;"></image>
-                                <view class='text-xl'>
-                                    <text class='text-black text-bold'>{{item.store_name}}</text>
-                                </view>
-                                <view class='text-xl'>
-                                    <text class='text-black text-bold'>{{item.store_name}}</text>
-                                </view>
-                                <view class='text-xl'>
-                                    <text class='text-black text-bold'>￥{{item.price}}</text>
-                                </view>
+                   
+                           <view class="flex justify-between" style="flex-wrap: wrap">
+              <view class=" margin-bottom-sm" style="width:49%;box-shadow:0 0 5rpx #ccc;" wx:for="{{likeData}}"  wx:key>
+                      <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none">
+                          <view class="wrap_imageTwo" style="background-image:url({{item.image}});background-size:100% 100%;"></view>
+                      </navigator>
+                      <view class='text-lg my_text_1 margin-top-xs margin-left-sm'>
+                          <text class='text-black text-bold'>{{item.store_name}}</text>
+                      </view>
+                      <view class="flex margin-top-xs margin-left-sm">
+                            <view class='basis-df text-xl text-end'>
+                                  <text class='text-red text-bold'>￥{{item.price}}</text>
                             </view>
-          
-       </view>
+                      </view>
+                      <view class="flex justify-between margin-top-xs" style='padding-left:20rpx;padding-right:20rpx;margin-bottom:15rpx;align-items:center'>
+                          <view class='text-df my_text_2'>
+                              <text class='text-gray'>销量: </text>
+                              <text class="text-gray" style='font-size:30rpx'>{{item.ficti+item.sales}}</text>
+                          </view>
+                           <!--<view class='text-xxl text-right' bindtap='getAttrInfo' data-id="{{item.id}}">
+                                    <text class='icon-gouwuche text-red text-bold'></text>
+                           </view>-->
+                      </view>
+              </view>
+    </view>
    </view>
           </view>
     </view>
@@ -152,16 +149,16 @@
 <view class='foot flex'>
   <view  class='fn-btns flex'>
     <view class='item' bindtap='goHomeClick'>
-      <view class='icon-shouye'><!--<span class='item-span'>{{CartCount}}</span>--></view>
-      <text>首页</text>
+      <view class='icon-shouye-copy' style="font-size:40rpx;margin-bottom:0"><!--<span class='item-span'>{{CartCount}}</span>--></view>
+      <text style='margin-top:3rpx;display:block'>首页</text>
     </view>
     <view class='item' bindtap='goPhone'>
-      <view class='icon-kefu'></view>
-      <text>客服</text>
+      <view class='icon-kefu' style="font-size:40rpx;margin-bottom:0"></view>
+      <text style='margin-top:3rpx;display:block'>客服</text>
     </view>
     <view class='item' bindtap='setCollect'>
-      <view class='{{collect==true?"icon-stars":"icon-tuanduicankaoxian-"}}'></view>
-      <text>收藏</text>
+      <view class='{{collect==true?"icon-stars-copy text-orange":"icon-tuanduicankaoxian--copy"}}' style="font-size:40rpx;margin-bottom:0"></view>
+      <text style='margin-top:3rpx;display:block'>收藏</text>
     </view>
     <!--<view class='item' bindtap='getCar'>
       <view class='iconfont icon-gouwuche'><span class='item-span'>{{CartCount}}</span></view>

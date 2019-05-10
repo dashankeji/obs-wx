@@ -16,7 +16,7 @@ page{
 
 .cu-load {
   display: block;
-  line-height: 3em;
+  line-height: 92rpx;
   text-align: center;
 }
 

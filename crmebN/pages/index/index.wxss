@@ -3,7 +3,7 @@ page{
 }
 
 .screen-swiper {
-  min-height: 375rpx;
+  min-height: 400rpx;
 }
 
 .screen-swiper image {
@@ -15,13 +15,14 @@ page{
 
 .wrap_imageOne{
   width: 100%;
-  height: 280rpx;
-  background-size:90% 90%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #ccc;
+  height: 272rpx;
+  background-size:cover;
+  background-position:center;
 }
-
+.wrap_imageTwo{
+  width: 350rpx;
+  height: 350rpx;
+}
 .wrap_image-maTop:nth-child(2){
   margin-top: 6rpx
 }
@@ -30,7 +31,7 @@ page{
   width: 100%;
   height: 200rpx;
 }
-
+.list-num{font-size:33rpx;color:red;}
 .basis-df {
   flex-basis: 50%;
 }
@@ -44,10 +45,12 @@ page{
   border-radius: 5000rpx;
 }
 
+.solidTwo{
+  border: 1px solid black;
+}
 
 /*用来包裹所有的小圆点  */
 .dots{
-  width: 100%;
   height: 15rpx; 
   display: flex;
   position: absolute;

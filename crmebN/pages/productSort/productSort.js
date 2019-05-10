@@ -32,6 +32,7 @@ Page({
     ],
     attrName: '',
     num: 1,
+    second_height: 0,
   },
   ClassificationListReq: function () {
     var header = {
@@ -176,7 +177,23 @@ Page({
   },
   onLoad: function () {
     app.setUserInfo();
-    this.ClassificationListReq();
+    // 获取系统信息
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        /*console.log(res);
+        // 可使用窗口宽度、高度
+        console.log('height=' + res.windowHeight);
+        console.log('width=' + res.windowWidth);*/
+        // 计算主体部分高度,单位为px
+        that.setData({
+          // second部分高度 = 利用窗口可使用高度 - first部分高度（这里的高度单位为px，所有利用比例将300rpx转换为px）
+          second_height: res.windowHeight - res.windowWidth / 750 * that.data.CustomBar - res.windowWidth / 750 * 92 -30
+        })
+      }
+    });
+
+    that.ClassificationListReq();
 
   },
   onShow: function () {
@@ -266,51 +283,51 @@ Page({
     });
 
   },
-  onReachBottom: function () {
-    var that = this;
-    var limit = 0;
+  /*onReachBottom: function () {
+    
 
-    if (that.data.hidden) return;
-    ++that.data.offset;
-    limit = that.data.offset * 8;
-
-    that.setData({
-      hidden: true,
-    });
-
-    var header = {
-      'content-type': 'application/x-www-form-urlencoded',
-    };
-    wx.request({
-      url: app.globalData.url + '/routine/auth_api/indexXiaoben?uid=' + app.globalData.uid + '&cate_id=' + that.data.GbCateId + '&offset=' + (limit - 8) + '&limit=' + limit,
-      method: 'GET',
-      header: header,
-      success: function (res) {
-        if (res.data.data.all.length < 1) {
-          --that.data.offset;
-          wx.showToast({
-            title: '没有更多的商品了',
-            icon: 'none',
-            duration: 2000
-          })
-        } else {
-          that.data.gardenStuffListDate[that.data.GbCateId] = that.data.gardenStuffListDate[that.data.GbCateId].concat(res.data.data.all);
-        };
-        that.setData({
-          hidden: false,
-          gardenStuffListDate: that.data.gardenStuffListDate
-        })
-      }
-    });
-
-  },
+  },*/
   /* upper(e) {
      console.log(e)
-   },
+   },*/
    lower(e) {
-     console.log(e)
+     var that = this;
+     var limit = 0;
+
+     if (that.data.hidden) return;
+     ++that.data.offset;
+     limit = that.data.offset * 8;
+
+     that.setData({
+       hidden: true,
+     });
+
+     var header = {
+       'content-type': 'application/x-www-form-urlencoded',
+     };
+     wx.request({
+       url: app.globalData.url + '/routine/auth_api/indexXiaoben?uid=' + app.globalData.uid + '&cate_id=' + that.data.GbCateId + '&offset=' + (limit - 8) + '&limit=' + limit,
+       method: 'GET',
+       header: header,
+       success: function (res) {
+         if (res.data.data.all.length < 1) {
+           --that.data.offset;
+           wx.showToast({
+             title: '没有更多的商品了',
+             icon: 'none',
+             duration: 2000
+           })
+         } else {
+           that.data.gardenStuffListDate[that.data.GbCateId] = that.data.gardenStuffListDate[that.data.GbCateId].concat(res.data.data.all);
+         };
+         that.setData({
+           hidden: false,
+           gardenStuffListDate: that.data.gardenStuffListDate
+         })
+       }
+     });
    },
-   scroll(e) {
+   /*scroll(e) {
      console.log(e)
    },*/
   tapsize: function (e) {

@@ -60,7 +60,7 @@ flex-basis:46%;
 } 
 
 .screen-swiper {
-  min-height: 375rpx;
+  min-height: 302rpx;
 }
 
 .screen-swiper image {
@@ -69,7 +69,10 @@ flex-basis:46%;
   height: 100%;
   margin: 0;
 }
-
+.wrap_imageTwo{
+  width: 350rpx;
+  height: 350rpx;
+}
 .foots-wrapper{position: absolute; left: 0; bottom: 0; width: 50%; height: 100rpx; line-height: 100rpx; text-align: center; background-color: #f8931f; color: #fff;border-radius:0;}
 .foots-wrapper-two{position: absolute; right: 0; bottom: 0; width: 50%; height: 100rpx; line-height: 100rpx; text-align: center; background-color: #ff3d3d; color: #fff;border-radius:0;}
 @import "/pages/foo-tan/foo-tan.wxss";

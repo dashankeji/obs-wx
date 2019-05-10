@@ -15,3 +15,8 @@
   background-position: center;
   background-color: #ccc;
 }
+
+.wrap_imageTwo{
+  width: 350rpx;
+  height: 350rpx;
+}

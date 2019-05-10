@@ -21,11 +21,12 @@ Page({
     hotList: [],
     hotListTwo: [],
     MoreGoods: [],
-    offset: 0,
+    offset: 1,
     title: "玩命加载中...",
     hidden: false,
     haoQiZhuHaoFanBgImg: '',
-    haoShuiZhuChuLaiBgImg: '' 
+    haoShuiZhuChuLaiBgImg: '',
+    pid: -1
   },
   swiperChange: function (e) {    //轮播监听变化事件
     this.setData({
@@ -85,8 +86,7 @@ Page({
           imgUrls: res.data.data.banner,
           menus: res.data.data.menus,//导航
           hotList: data,//热卖单品
-          hotListTwo: dataTwo,
-          MoreGoods: res.data.data.MoreGoods
+          hotListTwo: dataTwo
         })
       }
     })
@@ -101,7 +101,7 @@ Page({
       method: 'POST',
       header: header,
       success: function (res) {
-        var seasonalGoodsCateId, leisureRecreationCateId, MoreGoodsCateId;
+        var seasonalGoodsCateId, leisureRecreationCateId;
         for (var i = 0; i < res.data.data.length; i++) {
           if (res.data.data[i].cate_name == '首页') {
             var child = res.data.data[i].child;
@@ -119,47 +119,61 @@ Page({
                       haoShuiZhuChuLaiBgImg: child[j].pic
                     });
                   };
-                  if (child[j].cate_name == '更多商品') {
-                    MoreGoodsCateId = child[j].id;
-                  };
             }
             break;
           }
         }
-        that.getIndexInfo(leisureRecreationCateId, seasonalGoodsCateId, MoreGoodsCateId);
+        that.getIndexInfo(leisureRecreationCateId, seasonalGoodsCateId,-1);
+        //下面为更多商品获取
+        that.data.pid = that.ClassificationListReqID(res.data.data, ['首页']);
+        var header = {
+          'content-type': 'application/x-www-form-urlencoded',
+        };
+        wx.request({
+          url: app.globalData.url + '/routine/auth_api/pidStoreCategoryGetSonAllStore?uid=' + app.globalData.uid + '&pid=' + that.data.pid,
+          data: { limit: 8, offset: 0 },
+          method: 'POST',
+          header: header,
+          success: function (res) {
+             that.setData({
+               MoreGoods: res.data.data
+             });
+          }
+        });
+
       }
     });
   },
   onReachBottom: function (p) {
-    /*var that = this;
-    var limit = 20;
-    var offset = that.data.offset;
-    if (!offset) offset = 1;
-    var startpage = limit * offset;
+    var that = this;
+    var limit = 8;
+    var offset = limit * that.data.offset++;
+
     var header = {
       'content-type': 'application/x-www-form-urlencoded',
     };
     wx.request({
-      url: app.globalData.url + '/routine/auth_api/get_hot_product?uid=' + app.globalData.uid,
-      data: { limit: limit, offset: startpage },
+      url: app.globalData.url + '/routine/auth_api/pidStoreCategoryGetSonAllStore?uid=' + app.globalData.uid + '&pid=' + that.data.pid,
+      data: { limit: limit, offset: offset },
       method: 'POST',
       header: header,
       success: function (res) {
         var len = res.data.data.length;
-        for (var i = 0; i < len; i++) {
-          that.data.likeList.push(res.data.data[i])
-        }
-        that.setData({
-          offset: offset + 1,
-          likeList: that.data.likeList
-        });
-        if (len < limit) {
-          that.setData({
-            title: "数据已经加载完成",
-            hidden: true
+
+        if (len < 1) {
+          --that.data.offset;
+          wx.showToast({
+            title: '数据已经加载到尽头了',
+            icon: 'none',
+            duration: 2000
           });
           return false;
-        }
+        };
+        that.data.MoreGoods = that.data.MoreGoods.concat(res.data.data);
+        that.setData({
+          MoreGoods: that.data.MoreGoods
+        });
+
       },
       fail: function (res) {
         console.log('submit fail');
@@ -167,13 +181,13 @@ Page({
       complete: function (res) {
         console.log('submit complete');
       }
-    })*/
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+   
   },
 
   /**
@@ -182,7 +196,18 @@ Page({
   onShow: function () {
     
   },
-
+  ClassificationListReqID: function (arr, arrName) {    //获取分类id
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i].cate_name == arrName[0] && arrName.length == 1) {
+        return arr[i].id;
+      }
+      if (arr[i].cate_name == arrName[0] && arr[i].child) {
+        arrName.splice(0, 1);
+        return this.ClassificationListReqID(arr[i].child, arrName);
+      }
+    }
+    return -1;
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

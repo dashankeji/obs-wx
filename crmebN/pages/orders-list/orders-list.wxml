@@ -40,7 +40,7 @@
                           <view class='title' style="color:#999" wx:if="{{item.productInfo.attrInfo}}">{{item.productInfo.attrInfo.suk}}</view>
                       </view>
                       <view class='price'>
-                          <view><text>￥</text>{{item.productInfo.price}}</view>
+                          <view><text>￥</text>{{item.truePrice}}</view>
                           <view class='count text-right'>X{{item.cart_num}}</view>
                       </view>       
                   </view>

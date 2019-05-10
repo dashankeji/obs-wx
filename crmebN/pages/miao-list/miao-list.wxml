@@ -13,9 +13,9 @@
 <view class="flex flex-wrap bg-white solid-top">
       <view class='basis-df padding radius text-center text-xl {{tabSelectCssFlag[0]?"tahSelectCss":""}}' data-id="{{menuSwitcnTitle[0].id}}" bindtap='tabClickMenu'>{{menuSwitcnTitle[0].cate_name}}</view>
       <view style="position:absolute;left:46%;top:10%;width:8%;padding:3% 4%;">
-              <view style="height:66rpx;border-left:1px solid black;"></view>
+              <view style="height:54rpx;border-left:1px solid #aaa;"></view>
       </view>
-      <view class='basis-sm padding radius text-center text-xl {{tabSelectCssFlag[1]?"tahSelectCss":""}}' bindtap='tabClickShopOwner' data-id="{{menuSwitcnTitle[1].id}}">{{menuSwitcnTitle[1].cate_name}}</view>
+      <view class='basis-df padding radius text-center text-xl {{tabSelectCssFlag[1]?"tahSelectCss":""}}' bindtap='tabClickShopOwner' data-id="{{menuSwitcnTitle[1].id}}">{{menuSwitcnTitle[1].cate_name}}</view>
 </view>
 <!--轮播-->
 <view class="wrap_swiper" style="position:relative;top:0;left:0;">
@@ -35,52 +35,58 @@
 <!--菜单和店家导航信息-->
 <block wx:if="{{tabSelectCssFlag[0]}}">
   <view class="wrap_seasonalMerchandise">
-      <view class="flex solid-bottom justify-between" style="padding:20rpx;flex-wrap: wrap">
-                <view class=" margin-bottom-sm" style="width:49%;box-shadow:0 0 5rpx #ccc;" wx:for="{{menuSwitcnDate[menuSwitcnDateIndex]}}"  wx:key>
-                   <!-- <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none">-->
-                        <view class="wrap_imageOne" style="background-image:url({{item.image}});background-size:100% 100%"></view>
-                        <view class='text-lg my_text_1 margin-top-xs'>
-                            <text class='text-black text-bold'>{{item.store_name}}</text>
-                        </view>
-                        <view class='basis-df text-xl text-end'>
-                                    <text class='text-red text-bold'>￥{{item.price}}</text>
-                        </view>
-                        <view class="flex margin-top-xs">
-                              <view class='basis-df text-xl text-end'>
-                                    <text class='text-bold'>销量: {{item.ficti+item.sales}}</text>
-                              </view>
-                              <view class='basis-df text-xl text-right' bindtap='getAttrInfo' data-id="{{item.id}}">
+     <view class="flex justify-between" style="padding:20rpx;flex-wrap: wrap">
+              <view class=" margin-bottom-sm" style="width:49%;box-shadow:0 0 5rpx #ccc;" wx:for="{{menuSwitcnDate[menuSwitcnDateIndex]}}"  wx:key>
+                      <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none">
+                          <view class="wrap_imageTwo" style="background-image:url({{item.image}});background-size:100% 100%;"></view>
+                      </navigator>
+                      <view class='text-lg my_text_1 margin-top-xs margin-left-sm'>
+                          <text class='text-black text-bold'>{{item.store_name}}</text>
+                      </view>
+                      <view class="flex margin-top-xs margin-left-sm">
+                            <view class='basis-df text-xl text-end'>
+                                  <text class='text-red text-bold'>￥{{item.price}}</text>
+                            </view>
+                      </view>
+                      <view class="flex justify-between margin-top-xs" style='padding-left:20rpx;padding-right:20rpx;margin-bottom:15rpx;align-items:center'>
+                          <view class='text-df my_text_2'>
+                              <text class='text-gray'>销量: </text>
+                              <text class="text-gray" style='font-size:30rpx'>{{item.ficti+item.sales}}</text>
+                          </view>
+                           <view class='text-xxl text-right' bindtap='getAttrInfo' data-id="{{item.id}}">
                                     <text class='icon-gouwuche text-red text-bold'></text>
-                              </view>
-                        </view>
-                    <!-- </navigator> -->
-                </view>
-      </view>
+                           </view>
+                      </view>
+              </view>
+    </view>
   </view>
 </block>
 <block wx:else>
     <view class="wrap_seasonalMerchandise">
-      <view class="flex solid-bottom justify-between" style="padding:20rpx;flex-wrap: wrap">
-                <view class=" margin-bottom-sm" style="width:49%;box-shadow:0 0 5rpx #ccc;" wx:for="{{menuSwitcnDate[menuSwitcnDateIndex]}}"  wx:key>
-                  <!--   <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none"> -->
-                        <view class="wrap_imageOne" style="background-image:url({{item.image}});background-size:100% 100%"></view>
-                        <view class='text-lg my_text_1 margin-top-xs'>
-                            <text class='text-black text-bold'>{{item.store_name}}</text>
-                        </view>
-                        <view class='basis-df text-xl text-end'>
-                                    <text class='text-red text-bold'>￥{{item.price}}</text>
-                        </view>
-                        <view class="flex margin-top-xs">
-                              <view class='basis-df text-xl text-end'>
-                                    <text class='text-bold'>销量: {{item.ficti+item.sales}}</text>
-                              </view>
-                              <view class='basis-df text-xl text-right'>
-                                    <text class='icon-gouwuche text-red text-bold'  bindtap='getAttrInfo' data-id="{{item.id}}"></text>
-                              </view>
-                        </view>
-                    <!-- </navigator>-->
-                </view>
-      </view>
+      <view class="flex justify-between" style="padding:20rpx;flex-wrap: wrap">
+              <view class=" margin-bottom-sm" style="width:49%;box-shadow:0 0 5rpx #ccc;" wx:for="{{menuSwitcnDate[menuSwitcnDateIndex]}}"  wx:key>
+                      <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none">
+                          <view class="wrap_imageTwo" style="background-image:url({{item.image}});background-size:100% 100%;"></view>
+                      </navigator>
+                      <view class='text-lg my_text_1 margin-top-xs margin-left-sm'>
+                          <text class='text-black text-bold'>{{item.store_name}}</text>
+                      </view>
+                      <view class="flex margin-top-xs margin-left-sm">
+                            <view class='basis-df text-xl text-end'>
+                                  <text class='text-red text-bold'>￥{{item.price}}</text>
+                            </view>
+                      </view>
+                      <view class="flex justify-between margin-top-xs" style='padding-left:20rpx;padding-right:20rpx;margin-bottom:15rpx;align-items:center'>
+                          <view class='text-df my_text_2'>
+                              <text class='text-gray'>销量: </text>
+                              <text class="text-gray" style='font-size:30rpx'>{{item.ficti+item.sales}}</text>
+                          </view>
+                           <view class='text-xxl text-right' bindtap='getAttrInfo' data-id="{{item.id}}">
+                                    <text class='icon-gouwuche text-red text-bold'></text>
+                           </view>
+                      </view>
+              </view>
+    </view>
   </view>
 </block>
 </view>
