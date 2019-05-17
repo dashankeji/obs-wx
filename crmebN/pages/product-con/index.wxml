@@ -2,12 +2,12 @@
 <view class="wrap_title bg-white">
       <view class="cu-custom" style="height:{{CustomBar}}px;">
         <view class="cu-bar fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
-          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-             <block wx:if="{{!IconBack}}">
-               <text class='icon-iconfontback' style="font-size:20px"></text>
-             </block>
-               <text class='text-xxl text-bold'>商品详情</text>
-          </navigator>
+         <view class='action' bindtap='backClick'>
+              <block wx:if="{{!IconBack}}">
+                      <text class='icon-iconfontback' style="font-size:20px"></text>
+              </block>
+              <text class='text-xxl text-bold'>商品详情</text>
+        </view>
         </view>
       </view>
 </view>

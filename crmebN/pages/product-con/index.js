@@ -109,6 +109,22 @@ Page({
         url: '../index/index'
       })
     },
+    backClick: function () {
+      var that = this;
+      wx.navigateBack({
+        delta: 1,
+        fail: function (err) {
+          that.setData({
+            IconBack: true,
+          });
+          wx.showToast({
+            title: '请点击右下左角的首页返回',
+            icon: 'none',
+            duration: 1500,
+          });
+        }
+      });
+    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -120,9 +136,6 @@ Page({
           store_id = options.id;
         } else {
           store_id = decodeURIComponent(options.scene);
-          this.setData({
-            IconBack: true,
-          });
         };
 
         app.globalData.openPages = '/pages/product-con/index?id=' + store_id;
