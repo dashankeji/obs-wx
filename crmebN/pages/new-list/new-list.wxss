@@ -15,7 +15,7 @@
 .nav .nav-li text{color:#999999;}
 .nav .nav-li .nav-iconx{color:#343434;position:absolute;top:2rpx;}
 .nav .nav-total{position:relative;}
-.nav .total{display:inline-block;white-space:nowrap;overflow:hidden;min-width:39%;max-width:124rpx;}
+.nav .total{display:inline-block;white-space:nowrap;overflow:hidden;min-width:39%;max-width:124rpx;text-overflow:ellipsis;}
 .nav .nav-tap{font-size:35rpx;color:#454545 !important; flex:1 10%;}
 .nav .sort-s{position:absolute;top:-4rpx;font-size:31rpx;}
  .nav .sort-x{position:absolute;top:8rpx;font-size:31rpx;} 
