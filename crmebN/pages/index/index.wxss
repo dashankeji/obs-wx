@@ -60,8 +60,7 @@ page{
 /*未选中时的小圆点样式 */
 .dot{  
   width: 15rpx;  
-  margin-left: -7.5rpx;
-  margin-right: 23rpx;
+  margin-right: 24rpx;
   border-radius: 50%;
   background-color: white;
 }  

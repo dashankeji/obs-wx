@@ -13,7 +13,7 @@
 </view>
 <!--轮播-->
 <view class="wrap_swiper" style="position:relative;top:0;left:0;">
-      <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" bindchange="swiperChange" circular="true" autoplay="true" interval="5000" duration="500" current="{{currentSwiper}}">
+      <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" bindchange="swiperChange" circular="true" autoplay="true" interval="5000" duration="500" current="0">
         <swiper-item wx:for="{{storeInfo.slider_image}}" wx:key>
           <image src="{{url}}{{item}}" mode="aspectFill"></image>
         </swiper-item>

@@ -62,32 +62,34 @@
   <view class='list-wrapper'>
     <view class='wrapper'>
       <block wx:for="{{ordercon.cartInfo}}">
-          <navigator hover-class='none' wx:if="{{!ordercon.seckill_id && !ordercon.bargain_id && !ordercon.combination_id}}" url='/pages/product-con/index?id={{item.productInfo.id}}'>
+          <block wx:if="{{!ordercon.seckill_id && !ordercon.bargain_id && !ordercon.combination_id}}">
               <view class='item flex'>
-                <image src='{{url}}{{item.productInfo.image}}'></image>
+                 <navigator hover-class='none' url='/pages/product-con/index?id={{item.productInfo.id}}'>
+                        <image src='{{url}}{{item.productInfo.image}}'></image>
+                 </navigator> 
                 <view class='pro-info'>
                   <view class='title flex justify-between'>
                        <view>{{item.productInfo.store_name}}</view>
-                       <view class='price'><text>￥</text>{{item.productInfo.price}}<view class='count'>x{{item.cart_num}}</view></view>
+                       <view class='price'><text>￥</text>{{item.truePrice}}<view class='count'>x{{item.cart_num}}</view></view>
                   </view>
                   <view class='res' wx:if="{{item.productInfo.attrInfo}}">{{item.productInfo.attrInfo.suk}}</view>
                 </view>
                 <navigator wx:if="{{ordercon._status._type==3}}" hover-class="none" url='/pages/comment-con/comment-con?unique={{item.unique}}&uni={{ordercon.order_id}}' class='assess-btn'>评价</navigator>
                 <view wx:elif="{{ordercon._status._type==4}}" class='assess-btn off'>已评价</view>
               </view>
-          </navigator>
-          <navigator hover-class='none' wx:else>
+          </block>
+          <block wx:else>
               <view class='item flex'>
                 <image src='{{url}}{{item.productInfo.image}}'></image>
                 <view class='pro-info'>
                   <view class='title'>{{item.productInfo.store_name}}</view>
                   <view class='res'>{{item.productInfo.store_name}}</view>
-                  <view class='price'><text>￥</text>{{item.productInfo.price}}<text class='count'>x{{item.cart_num}}</text></view>
+                  <view class='price'><text>￥</text>{{item.truePrice}}<text class='count'>x{{item.cart_num}}</text></view>
                 </view>
                 <navigator wx:if="{{ordercon._status._type==3}}" hover-class="none" url='/pages/comment-con/comment-con?unique={{item.unique}}' class='assess-btn'>评价</navigator>
                 <view wx:elif="{{ordercon._status._type==4}}" class='assess-btn off'>已评价</view>
               </view>
-          </navigator>
+          </block>
       </block>
     </view>
   </view>

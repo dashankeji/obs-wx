@@ -81,7 +81,8 @@ Page({
       header: header,
       success: function (res) {
         that.setData({
-          userinfo: res.data.data
+          userinfo: res.data.data,
+          orderStatusNum: res.data.data.orderStatusNum
         })
       }
     });

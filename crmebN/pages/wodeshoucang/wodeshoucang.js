@@ -344,6 +344,8 @@ Page({
       header: header,
       success: function (res) {
         if (res.data.code == 200) {
+          that.data.ShoppingAllPid = [];
+          that.data.allCheckNum = [];
           that.data.ShoppingData.data = res.data.data;
           for (var i = 0; i < res.data.data.length; i++){
               that.data.allCheckNum[i] = 0;
@@ -352,7 +354,8 @@ Page({
           that.shouCangAllShopping();
           that.setData({
             ShoppingData: that.data.ShoppingData,
-            allCheckNum: that.data.allCheckNum  
+            allCheckNum: that.data.allCheckNum,
+            allCheckFlag: true
           });
         
         } else {

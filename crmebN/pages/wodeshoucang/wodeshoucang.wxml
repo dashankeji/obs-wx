@@ -36,7 +36,7 @@
       完成
     </view>
     <!--底部操作-->
-    <view class="flex justify-between padding text-red bg-white" style="position:fixed;bottom:0;left:0;width:92%">
+    <view class="flex justify-between padding text-red bg-white" style="position:fixed;bottom:0;left:0;width:100%">
                 <view class="flex" style="align-items:center">
                         <text class="text-xxl icon-yuandianda {{allCheckFlag ? 'text-fff' : 'text-red'}}" bindtap="allCheckClcik" style=""></text>    
                         <text class="text-bold text-xl text-black"> 全选</text>

@@ -107,13 +107,13 @@ Page({
             var child = res.data.data[i].child;
             for(var j = 0; j < child.length; j++){
 
-                  if (child[j].cate_name == '好器煮好饭') {
+                  if (j == 0) {
                     leisureRecreationCateId = child[j].id;
                     that.setData({
                       haoQiZhuHaoFanBgImg: child[j].pic
                     });
                   };
-                  if (child[j].cate_name == '好水煮出来' ){
+                  if ( j== 1 ){
                     seasonalGoodsCateId = child[j].id;
                     that.setData({
                       haoShuiZhuChuLaiBgImg: child[j].pic

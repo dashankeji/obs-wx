@@ -29,10 +29,12 @@
                                 scroll-top="{{scrollTop}}"
                               >
                                   <view class="cu-list-two text-left menu">
-                                        <view wx:if="{{gardenStuffListDate[gardenStuffListDateIndex] != undefined}}" class="cu-item {{menuArrow?'arrow':''}}" wx:for="{{gardenStuffListDate[gardenStuffListDateIndex]}}" wx:key> 
-                                              <view class="cu-avatar-group">
-                                                    <view class="cu-avatar xl" style="background-image:url({{item.image}});background-size:100% 100%;"></view>
-                                              </view>
+                                        <view wx:if="{{gardenStuffListDate[gardenStuffListDateIndex] != undefined}}" class="cu-item {{menuArrow?'arrow':''}}" wx:for="{{gardenStuffListDate[gardenStuffListDateIndex]}}" wx:key>
+                                              <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none">
+                                                  <view class="cu-avatar-group">
+                                                        <view class="cu-avatar xl" style="background-image:url({{item.image}});background-size:100% 100%;"></view>
+                                                  </view>
+                                              </navigator>
                                               <view class='content' style='position:relative;top:0;left:0'>
                                                     <view style="width:80%">
                                                           <view class='text-xl my_text_1'>{{item.store_name}}</view>

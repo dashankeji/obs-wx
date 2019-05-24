@@ -135,7 +135,10 @@ Page({
         if (options.id) {
           store_id = options.id;
         } else {
-          store_id = decodeURIComponent(options.scene);
+          var scene = decodeURIComponent(options.scene);
+          scene  = scene.split(',');
+          app.globalData.spid = scene[0];
+          store_id = scene[1];
         };
 
         app.globalData.openPages = '/pages/product-con/index?id=' + store_id;

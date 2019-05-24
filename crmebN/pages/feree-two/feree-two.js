@@ -2,6 +2,8 @@
 var app = getApp();
 Page({
   data: {
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
     url: app.globalData.urlImages,
     fereeArray: [],
     page: 1,

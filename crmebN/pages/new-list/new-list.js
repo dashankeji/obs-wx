@@ -220,6 +220,7 @@ Page({
     that.setData({
       cid: '',
       sid: '',
+      total: '综合',
       hiddendown: true,
     })
     that.getProductList();
