@@ -1,11 +1,7 @@
-<!--个人中心标题加图标返回-->
-<view class="cu-custom" style="height:{{CustomBar}}px;">
-  <view class="cu-bar fixed bg-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
-    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-      <text class='icon-back' style="font-size:20px"></text>  <text class='text-xxl text-bold'>个人中心</text>
-    </navigator>
-  </view>
-</view>
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '个人中心', iconFlag: false }}" />
+
 <view class='header flex' style="background-image:url({{bannerImgData.url}});background-size:100% 100%">
   <view class='system-notification iconfont icon-pinglun' bindtap='goNotification'><text class="system-notification-text" wx:if="{{userinfo.notice > 0}}">{{userinfo.notice}}</text></view>
   
@@ -40,17 +36,17 @@
         </navigator>
       </view>
       <view class='item'>
+        <navigator hover-class="none" url='/pages/orders-list/orders-list?nowstatus=2'>
+          <view class='item-span' wx:if="{{orderStatusNum.noPostage > 0}}">{{orderStatusNum.noPostage}}</view>
+          <image src='/images/dpj.png'></image>
+          <view class='text'>待发货</view>
+        </navigator>
+      </view>
+      <view class='item'>
         <navigator hover-class="none" url='/pages/orders-list/orders-list?nowstatus=3'>
           <view class='item-span'  wx:if="{{orderStatusNum.noTake}}">{{orderStatusNum.noTake}}</view>
           <image src='/images/dsh.png'></image>
           <view class='text'>待收货</view>
-        </navigator>
-      </view>
-      <view class='item'>
-        <navigator hover-class="none" url='/pages/orders-list/orders-list?nowstatus=4'>
-          <view class='item-span' wx:if="{{orderStatusNum.noReply}}">{{orderStatusNum.noReply}}</view>
-          <image src='/images/dpj.png'></image>
-          <view class='text'>待评价</view>
         </navigator>
       </view>
       <view class='item'>
@@ -140,9 +136,5 @@
      
     </view>
 </view>
+<view style="margin-top:20rpx;margin-bottom:15rpx;text-align:center;width:100%">技术支持: <text style='font-weight:bold'>大山科技</text></view>
 </view>
-
-
-
-
-

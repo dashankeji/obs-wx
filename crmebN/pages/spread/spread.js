@@ -8,6 +8,7 @@ Page({
    */
   data: {
     url: app.globalData.urlImages,
+    StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     code:'',
     userinfo:[],

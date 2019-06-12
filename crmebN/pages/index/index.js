@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     currentSwiper: 0,   //轮播焦点
     url: app.globalData.urlImages,
@@ -18,15 +19,41 @@ Page({
     duration: 500,//动画播放的时长;
     indicatorColor: "rgba(51, 51, 51, .3)",
     indicatorActivecolor: "#ffffff",
-    hotList: [],
-    hotListTwo: [],
     MoreGoods: [],
     offset: 1,
     title: "玩命加载中...",
     hidden: false,
-    haoQiZhuHaoFanBgImg: '',
-    haoShuiZhuChuLaiBgImg: '',
-    pid: -1
+    haoQiZhuHaoFanBgImg: [],
+    pid: -1,
+    top: '-10%'
+  },
+  setTouchMove: function () {
+
+    var that = this;
+
+      const query = wx.createSelectorQuery()
+      query.select('#the-id').boundingClientRect()
+      query.selectViewport().scrollOffset()
+      query.exec(function (res) {
+
+        var queryTwo = wx.createSelectorQuery()
+        queryTwo.select('#tell').boundingClientRect()
+        queryTwo.exec((ress) => {
+
+          that.setData({
+            top: res[0].top - ress[0].height - 1 + 'px'
+          });
+        });
+       
+      });
+
+   
+  },
+  tell: function(){
+    wx.makePhoneCall({
+      phoneNumber: '13822580920',
+    })
+
   },
   swiperChange: function (e) {    //轮播监听变化事件
     this.setData({
@@ -49,6 +76,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     app.setBarColor();
     var that = this;
     if (options.spid){
@@ -58,38 +86,46 @@ Page({
     
     that.ClassificationListReq();
   },
-  getIndexInfo:function(cateIdOne,cateIdTwo,cateIdThree){
-    var cateIdOne = cateIdOne ||  -1;
-    var cateIdTwo = cateIdTwo || -1;
+  getIndexInfo:function(cateIdAll){
 
     var header = {
       'content-type': 'application/x-www-form-urlencoded',
     };
     var that = this;
     wx.request({
-      url: app.globalData.url + '/routine/auth_api/index?uid=' + app.globalData.uid + '&cateId_one=' + cateIdOne + '&cateId_two=' + cateIdTwo + '&cateId_Three=' + cateIdThree,
+      url: app.globalData.url + '/routine/auth_api/index?uid=' + app.globalData.uid + '&cateIdAll=' + cateIdAll,
       method: 'POST',
       header: header,
       success: function (res) {
-        var data = res.data.data.leisureRecreation;
-        var len = data.length;
-        for(var i =0;i<len;i++){
-          data[i].keyword = data[i].keyword.split(',');
-        };
-        var dataTwo = res.data.data.seasonalGoods;
-        var len = dataTwo.length;
-        for (var j = 0; j < len; j++) {
-          dataTwo[j].keyword = dataTwo[j].keyword.split(',');
-        };
 
+        var len = res.data.data.all.length;
+        var data = res.data.data.all; 
+        for (var i = 0; i < len; i++) {
+           for (var j = 0; j < data[i].length; j++) {
+              data[i][j].keyword = data[i][j].keyword.split(',');
+            }
+        };
+      
         that.setData({
           imgUrls: res.data.data.banner,
           menus: res.data.data.menus,//导航
-          hotList: data,//热卖单品
-          hotListTwo: dataTwo
-        })
+          haoQiZhuHaoFanBgImg: that.data.haoQiZhuHaoFanBgImg,
+          allData: data     
+        });
+        that.setTouchMove();
       }
     })
+  },
+  delfh: function(str){
+      var str2 = '';
+      str=str.replace(",,", ",");
+      if(str.substring(str.length - 1, str.length) == ","){
+        str2 = str.substring(0, str.length - 1);
+        this.delfh(str2);
+      }else {
+        str2 = str;
+      }
+      return str2;
   },
   ClassificationListReq: function () {
     var header = {
@@ -105,25 +141,19 @@ Page({
         for (var i = 0; i < res.data.data.length; i++) {
           if (res.data.data[i].cate_name == '首页') {
             var child = res.data.data[i].child;
+            var strId = '';
+           
             for(var j = 0; j < child.length; j++){
+                  
+               strId += child[j].id + ',';
+               that.data.haoQiZhuHaoFanBgImg.push(child[j].pic);
+              
+            };
 
-                  if (j == 0) {
-                    leisureRecreationCateId = child[j].id;
-                    that.setData({
-                      haoQiZhuHaoFanBgImg: child[j].pic
-                    });
-                  };
-                  if ( j== 1 ){
-                    seasonalGoodsCateId = child[j].id;
-                    that.setData({
-                      haoShuiZhuChuLaiBgImg: child[j].pic
-                    });
-                  };
-            }
             break;
           }
         }
-        that.getIndexInfo(leisureRecreationCateId, seasonalGoodsCateId,-1);
+        that.getIndexInfo(that.delfh(strId));
         //下面为更多商品获取
         that.data.pid = that.ClassificationListReqID(res.data.data, ['首页']);
         var header = {

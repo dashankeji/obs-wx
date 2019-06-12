@@ -4,6 +4,7 @@ Page({
   data: {
     url: app.globalData.urlImages,
     CustomBar: app.globalData.CustomBar,
+    StatusBar: app.globalData.StatusBar,
     currentTab:"",
     hiddens:true,
     icondui:0,

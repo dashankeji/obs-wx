@@ -8,7 +8,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    that.getRoutineStyle();
+   // that.getRoutineStyle();
     wx.getSystemInfo({
       success: e => {
         this.globalData.StatusBar = e.statusBarHeight;
@@ -29,7 +29,7 @@ App({
     openPages:'',
     spid:0,
     urlImages: '',
-    url: 'https://obs.largehill.net'
+    url: 'https://obs.obersun.com'
   },
   getRoutineStyle:function(){
     var that = this;

@@ -4,14 +4,10 @@
         <view class='btn' bindtap='btntap' wx:if='{{!foothidden}}'>管理</view>
         <view class='btn' bindtap='btntap' wx:if='{{foothidden}}'>取消</view>
      </view>
-  <!--购物车标题加图标返回-->
-<view class="wrap_title">
-      <view class="cu-custom" style="height:{{CustomBar}}px;">
-        <view class="cu-bar fixed bg-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">  
-              <text class='text-xxl text-bold margin-left-sm'>购物车</text>
-        </view>
-      </view>
-</view>
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '购物车', iconFlag: false }}" />
+
   <view class='car-list' style="margin-top:70rpx;">
     <block wx:for="{{cartList}}" wx:key>
         <view class='list-item flex'>
@@ -93,7 +89,7 @@
         <view class='txt'>全选</view>
       </view>
       <view class='right-wrapper flex'>
-        <view class='collection-btn' bindtap='collectAll'>移入收藏</view>
+        <view class='collection-btn' bindtap='collectAll' style='margin-right:10rpx'>移入收藏</view>
         <view class='delete-btn' bindtap='cartDelAll'>删除</view>
       </view>
     </view>

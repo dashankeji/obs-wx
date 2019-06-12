@@ -9,6 +9,7 @@ Page({
     logo: '',
     name: '',
     url: app.globalData.url,
+    flag: true
   },
 
   /**
@@ -16,8 +17,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    that.data.flag = false;
     app.setBarColor();
-    if (options.scene) app.globalData.spid = options.scene;
+    if (options.scene) app.globalData.spid = options.scene;  
     that.setSetting();
   },
 
@@ -54,8 +56,9 @@ Page({
                   info: userInfo
                 },
                 success: function (res) {
+                  that.data.flag = true;
                   app.globalData.uid = res.data.data.uid;
-                  if (app.globalData.openPages != '' && app.globalData.openPages != undefined) {//跳转到指定页面
+                  if (app.globalData.openPages != undefined && app.globalData.openPages.indexOf("/pages/product-con/index") != -1) {//跳转到指定页面
                     wx.navigateTo({
                       url: app.globalData.openPages
                     })
@@ -82,6 +85,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+   if(this.data.flag){
+    this.setSetting();
+   };
   },
 })

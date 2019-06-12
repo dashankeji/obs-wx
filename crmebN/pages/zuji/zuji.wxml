@@ -1,13 +1,7 @@
-<!--足迹标题加图标返回-->
-<view class="wrap_title bg-white">
-      <view class="cu-custom" style="height:{{CustomBar}}px;">
-        <view class="cu-bar fixed" style="height:{{CustomBar}}px;">
-          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>我的足迹</text>
-          </navigator>
-        </view>
-      </view>
-</view>
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '我的足迹', iconFlag: true }}" />
+
 <view class="wrap_seasonalMerchandise bg-white">
       <view class="flex justify-between" style="padding:20rpx;flex-wrap: wrap">
               <view class=" margin-bottom-sm" style="width:49%;box-shadow:0 0 5rpx #ccc;" wx:for="{{footprintList}}"  wx:key>

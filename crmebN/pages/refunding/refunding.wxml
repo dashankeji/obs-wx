@@ -1,3 +1,7 @@
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '退款/售后', iconFlag: true }}" />
+
 <view class='refunding flex'>
     <view class='refunding-ing line'>{{ordercon._status._msg}}</view>
     <view class='refunding-time line'>{{ordercon.refund_reason_time}}</view>

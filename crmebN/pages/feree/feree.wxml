@@ -1,12 +1,7 @@
-<view class="wrap_title bg-white">
-      <view class="cu-custom" style="height:{{CustomBar}}px;">
-        <view class="cu-bar fixed" style="height:{{CustomBar}}px;">
-          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>我的推广人</text>
-          </navigator>
-        </view>
-      </view>
-</view>
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '我的推广人', iconFlag: true }}" />
+
 <view class="header">
     <text class='tuipic'></text>
     粉丝统计：{{count}}

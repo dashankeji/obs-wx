@@ -1,12 +1,7 @@
-<view class="wrap_title bg-white">
-      <view class="cu-custom" style="height:{{CustomBar}}px;">
-        <view class="cu-bar fixed" style="height:{{CustomBar}}px;">
-          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>查看物流</text>
-          </navigator>
-        </view>
-      </view>
-</view>
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '查看物流', iconFlag: true }}" />
+
 <view class="header flex">
     <image src='/images/express_icon.jpg'></image>
     <view class='header-text'>
@@ -19,7 +14,7 @@
         <view class='header-number'>物流单号：{{order.delivery_id}}</view>
     </view>
 </view>
-<view class='log-ul'>
+<!--<view class='log-ul'>
 
    <view class='log-li flex' wx:for="{{express.result.list}}">
        <view class='log-yuan active'></view>
@@ -33,8 +28,8 @@
   
  
    
-</view>
-<view class='log-title'>
+</view>-->
+<!--<view class='log-title'>
         <text class='title-line'></text>
         <text class='title-text'><text class='iconfont icon-cainixihuan title-pic'></text>猜你喜欢</text>
         <text class='title-line'></text>
@@ -46,7 +41,7 @@
                            <image src='{{url}}{{item.image}}' class='list-images {{_num==1?"list-images2":""}}'></image>
                       </navigator>
                  <!-- <image src='{{url}}{{item.image}}' class='list-images'></image> -->
-                 <view class='list-text'>{{item.store_name}}</view>
+                 <!--<view class='list-text'>{{item.store_name}}</view>
                  <view class='list-money flex'>
                      <view>
                         <view class='list-num'>已售{{item.sort}}</view>
@@ -56,4 +51,4 @@
                  </view>
              </view>
          </block>
-    </view>
+    </view>-->

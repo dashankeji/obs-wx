@@ -1,9 +1,13 @@
-<!--标题-->
-<view class="wrap_title" style="height:{{CustomBar}}px;line-height:{{CustomBar}}px;">
-    <view class='text-xxl padding'>
-        <text class='text-black text-bold'>欧柏尚电器</text>
-    </view>
+<!-- 返回首页 -->
+<view class="view" style='top:{{top}}'>
+     <button open-type="contact" class='contact-but'>
+         <image id="tell" src="/images/tellPhone.png" style="background-color:#fff;width:100%;height:100%"></image>
+     </button>
 </view>
+
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '欧柏尚电器', iconFlag: false }}" />
 
 <!--<view class="flex">
     <view style='flex-basis: 20%;'>
@@ -44,16 +48,16 @@
     </view>
 </view>
 
-<!-- 好器煮好饭 -->
+<!-- AllData -->
+<block wx:for="{{allData}}" wx:key>
 <view class="wrap_seasonalMerchandise">
- <block wx:if="{{ haoQiZhuHaoFanBgImg.length>2 }}">
+ <block wx:if="{{ haoQiZhuHaoFanBgImg[index].length>2 }}">
      <view>
-          <view style="height:200rpx;line-height:200rpx;text-align:center;font-size:60rpx;background-image:url({{haoQiZhuHaoFanBgImg}});background-size:100% 100%;color:#fff">
+          <view style="height:200rpx;line-height:200rpx;text-align:center;font-size:60rpx;background-image:url({{haoQiZhuHaoFanBgImg[index]}});background-size:100% 100%;color:#fff">
           </view>
     </view>
- </block>
-    <view class="padding" style="background-image:url(https://obs.largehill.net/public/uploads/shouYeShangPingBg/bg.jpg);background-size:cover;background-position:center;">
-    <block wx:for="{{hotList}}"  wx:key>
+    <view id="the-id" class="padding" style="background-image:url(https://obs.largehill.net/public/uploads/shouYeShangPingBg/bg.jpg);background-size:cover;background-position:center;">
+    <block wx:for="{{item}}"  wx:key>
         <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none">
           <view class="flex justify-between margin-bottom-sm" style="box-shadow:0 0 5rpx #ccc;background-color:#fff">
                   <view class="padding-sm flex justify-between" style="width:60%;flex-direction:column;font-weight:bold">
@@ -83,76 +87,16 @@
         </navigator>
     </block>
     </view>
+   </block>
 </view>
-
-
-<!-- 好水煮出来 -->
-
-<view class="wrap_seasonalMerchandise">
-  <block wx:if="{{ haoShuiZhuChuLaiBgImg.length>2 }}">
-     <view>
-          <view style="height:200rpx;line-height:200rpx;text-align:center;font-size:60rpx;background-image:url({{haoShuiZhuChuLaiBgImg}});background-size:100% 100%;color:#fff">
-          </view>
-    </view>
-  </block>
-    <view class="padding" style="background-image:url(https://obs.largehill.net/public/uploads/shouYeShangPingBg/bg.jpg);background-size:cover;background-position:center;">
-    <block wx:for="{{hotListTwo}}"  wx:key>
-        <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none">
-          <view class="flex justify-between margin-bottom-sm" style="box-shadow:0 0 5rpx #ccc;background-color:#fff">
-                  <view class="padding-sm flex justify-between" style="width:60%;flex-direction:column;font-weight:bold">
-                      <view>
-                          <view class="my_text_1" style="font-size:30rpx">{{item.store_name}}</view>
-                          <view class="my_text_2" style="font-size:40rpx;padding:5rpx 0 5rpx 0">{{item.store_info}}</view>
-                          <view class="margin-top-xs flex justify-between" style='flex-wrap: wrap'>
-                              <block wx:for="{{item.keyword}}" wx:key>
-                                   <text class="solidTwo padding-xs text-red" style="width:48%;font-size:26rpx;display:flex;align-items:center;margin-bottom:10rpx;justify-content:center">{{item}}</text>
-                              </block>
-                          </view>
-                      </view>
-                      <view>
-                          <view class="flex flex justify-between" style='align-items:center'>
-                              <view>惊喜价:￥<text class="text-red text-bold" style="font-size:40rpx;">{{item.price}}</text></view>
-                              <view class="text-gray" style="font-size:20rpx;margin-top:20rpx;">原价:￥<text>{{item.ot_price}}</text></view>
-                          </view>
-                          <view style="margin-top:10rpx"></view>
-                          <view class="solidTwo" style="width:116rpx;border-radius:15rpx;padding: 10rpx;font-size:23rpx;">点击购买</view>
-                      </view>
-                  </view>
-                  <view style="width:40%;background-color:#cbccce;display:flex;align-items:center;">
-                      <view class="wrap_imageOne" style="background-image:url({{item.image}});"></view>
-                  </view>
-          </view>
-         <!-- <view style='background-image:url({{item.image}});width:100%;height:250rpx;background-size:cover;background-position:center;margin-bottom:20rpx'> </view>-->
-        </navigator>
-    </block>
-    </view>
-</view>
+</block>
 
 <!--更多商品-->
 <view class="wrap_seasonalMerchandise">
     <view class='text-xl padding text-center'>
         <text class='text-black text-bold'>\\\\\更 多 商 品///</text>
     </view>
-    <!--<view class="flex solid-bottom justify-between" style="padding:20rpx;flex-wrap: wrap">
-              <view class=" margin-bottom-sm" style="width:49%;box-shadow:0 0 5rpx #ccc;" wx:for="{{MoreGoods}}"  wx:key>
-                  <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none">
-                      <view class="wrap_imageTwo" style="background-image:url({{item.image}});background-size:100% 100%;"></view>
-                      <view class='text-lg my_text_1  margin-left-sm'>
-                          <text class='' style='font-size:30rpx'>{{item.store_name}}</text>
-                      </view>
-                      <view class='text-xl text-end margin-left-sm'>
-                                  <text class='list-num'>￥{{item.price}}</text>
-                      </view>
-                      <view class="flex margin-left-sm">
-                            <view class='basis-df text-xl text-end'>
-                                  <text style='font-size:22rpx'>销量: </text>
-                                  <text style="font-size:30rpx">{{item.ficti+item.sales}}</text>
-                            </view>
-                            <view class="icon-shanchu"></view>
-                      </view>
-                  </navigator>
-              </view>
-    </view>-->
+
     <view class="flex justify-between" style="padding:20rpx;flex-wrap: wrap">
               <view class=" margin-bottom-sm" style="width:49%;box-shadow:0 0 5rpx #ccc;" wx:for="{{MoreGoods}}"  wx:key>
                   <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none">

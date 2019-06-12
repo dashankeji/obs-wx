@@ -8,6 +8,7 @@ Page({
   data: {
     search:'',
     CustomBar: app.globalData.CustomBar,
+    StatusBar: app.globalData.StatusBar,
     url: app.globalData.urlImages,
     first:0,
     orderType:'-3',

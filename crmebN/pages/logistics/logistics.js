@@ -2,6 +2,7 @@ var app = getApp();
 // pages/unshop/unshop.js
 Page({
   data: {
+    StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     url: app.globalData.urlImages,
     Arraylike: [],
@@ -19,15 +20,20 @@ Page({
     app.setUserInfo();
     var orderid = options.orderId;
     this.express(orderid);
-    this.likeproduct();
+    //this.likeproduct();
     // console.log(orderid);
   },
   express: function (orderid){
     var that = this;
-    wx.request({
+    var header = {
+      'content-type': 'application/x-www-form-urlencoded'
+    };
+    /*wx.request({
       url: app.globalData.url + '/routine/auth_api/express?uid='+app.globalData.uid +'&uni='+orderid,
       method: 'GET',
+      header: header,
       success: function (res) {
+        console.log(res);
         if(res.data.code==200){
         that.setData({
           order: res.data.data.order,
@@ -40,7 +46,26 @@ Page({
           })
         }
       }
-    })
+    })*/
+
+    wx.request({
+      url: app.globalData.url + '/routine/auth_api/get_order?uid=' + app.globalData.uid,
+      data: { uni: orderid },
+      method: 'get',
+      header: header,
+      success: function (res) {
+        wx.hideLoading();
+        that.setData({
+          order: res.data.data
+        });
+      },
+      fail: function (res) {
+        console.log('submit fail');
+      },
+      complete: function (res) {
+        console.log('submit complete');
+      }
+    });
   },
   likeproduct:function(){
     var that = this;

@@ -1,9 +1,9 @@
 <template name="headContent">
-    <view class="wrap_title bg-white solid-bottom">
+    <view class="wrap_title solid-bottom">
           <view class="cu-custom" style="height:{{CustomBar}}px;">
-            <view class="cu-bar fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+            <view class="cu-bar fixed bg-white" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
               <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-                  <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>{{text}}</text>
+                  <block wx:if="{{iconFlag}}"><text class='icon-iconfontback' style="font-size:20px"></text></block>  <text class='text-xxl text-bold'>{{text}}</text>
               </navigator>
             </view>
           </view>

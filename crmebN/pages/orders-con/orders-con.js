@@ -9,6 +9,7 @@ Page({
   data: {
     url: app.globalData.urlImages,
     CustomBar: app.globalData.CustomBar,
+    StatusBar: app.globalData.StatusBar,
     basicsList: [{
       icon: 'yixuan',
       name: '待支款'

@@ -9,7 +9,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.2",
+	"libVersion": "2.1.1",
 	"appid": "wxcdf6edb1ac597bad",
 	"projectname": "shopcrmeb",
 	"condition": {

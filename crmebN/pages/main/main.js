@@ -2,6 +2,7 @@ var app = getApp();
 // pages/main/main.js
 Page({
   data: {
+    StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     url: app.globalData.urlImages,
     now_money:'',

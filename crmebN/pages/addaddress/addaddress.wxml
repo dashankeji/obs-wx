@@ -1,14 +1,8 @@
  <view id="wrap">
-<!--收货地址标题加图标返回-->
- <view class="wrap_title bg-white solid-bottom padding-bottom">
-      <view class="cu-custom" style="height:{{CustomBar}}px;">
-        <view class="cu-bar fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
-          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>地址管理</text>
-          </navigator>
-        </view>
-      </view>
-</view>
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '地址管理', iconFlag: true }}" />
+
 <!--表单填写-->
 <form bindsubmit="formSubmit" bindreset="formReset">
       <view class="cu-form-group">

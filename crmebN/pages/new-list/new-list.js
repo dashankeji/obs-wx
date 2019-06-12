@@ -5,6 +5,7 @@ Page({
   data: {
     attrName: '',
     num: 1,
+    StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     url: app.globalData.urlImages,
     hiddendown: true,

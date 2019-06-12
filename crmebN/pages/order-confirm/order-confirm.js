@@ -7,6 +7,7 @@ Page({
    */
   data: {
     CustomBar: app.globalData.CustomBar,
+    StatusBar: app.globalData.StatusBar,
     cartArr: [
       { "name": "微信", "icon": "icon-weixinzhifu", value:'weixin'},
       { "name": "余额支付", "icon": "icon-yuezhifu", value: 'yue' },

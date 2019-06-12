@@ -6,6 +6,7 @@ var wxh = require('../../utils/wxh.js');
 Page({
   data: {
     CustomBar: app.globalData.CustomBar,
+    StatusBar: app.globalData.StatusBar,
     gardenStuffListDateIndex: -1,            // 果蔬点击时下标
     hidden: true,
     gardenStuffTitle: ['正在请求'],   //果蔬标题

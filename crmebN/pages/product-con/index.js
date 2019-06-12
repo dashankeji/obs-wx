@@ -9,6 +9,7 @@ Page({
      */
     data: {
         CustomBar: app.globalData.CustomBar,
+        StatusBar: app.globalData.StatusBar,
         storeImage: '',//海报产品图
         PromotionCode: '',//二维码图片
         canvasStatus: false,//海报绘图标签
@@ -54,6 +55,11 @@ Page({
           0: [
           ]}
     },
+    navitorGo: function(){
+      wx.switchTab({
+        url: '/pages/index/index'
+      });
+    },
     shangPinCodeClick: function(){
       wx.navigateTo({
         url: '/pages/shangPinCode/index?id=' + this.data.storeInfo.id + '&imgUrl=' + this.data.storeInfo.slider_image[0] + '&store_name=' + this.data.storeInfo.store_name + '&price=' + this.data.storeInfo.price + '&ot_price=' + this.data.storeInfo.ot_price
@@ -75,7 +81,7 @@ Page({
         wxh.home(that, e);
     },
     goPhone: function () {
-        wx.request({
+        /*wx.request({
             url: app.globalData.url + '/routine/auth_api/get_site_phone?uid=' + app.globalData.uid,
             method: 'GET',
             success: function (res) {
@@ -83,7 +89,10 @@ Page({
                     phoneNumber: res.data.msg,
                 })
             }
-        })
+        })*/
+      wx.makePhoneCall({
+        phoneNumber: '13822580920',
+      });
     },
     setNumber:function(e){
         var that = this;

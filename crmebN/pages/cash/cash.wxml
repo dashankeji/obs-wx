@@ -1,23 +1,18 @@
-<view class="wrap_title bg-white">
-      <view class="cu-custom" style="height:{{CustomBar}}px;">
-        <view class="cu-bar fixed" style="height:{{CustomBar}}px;">
-          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>提现</text>
-          </navigator>
-        </view>
-      </view>
-</view>
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '提现', iconFlag: true }}" />
+
 <view class='header'>
    <view class="money flex" bindtap='cardtap'>{{_num==0?"银行卡":"微信钱包"}}<text class='icon-bottom cashxia'></text></view>
     <view class='cashdown' hidden='{{hiddentap}}'>
         <view class='cashdown-li' data-idnum='0' bindtap='idnumtap'><text class='icon-yinhangqia card'></text><text class='cash-text'>银行卡</text><text class='cashdui {{_num==0?"icon-yixuan":""}}'></text></view>
-        <view class='cashdown-li' data-idnum='1' bindtap='idnumtap'><text class='icon-z-weixin weixin'></text><text class='cash-text' >微信钱包</text><text class='cashdui {{_num==1?"icon-yixuan":""}}'></text></view>
+        <!--<view class='cashdown-li' data-idnum='1' bindtap='idnumtap'><text class='icon-z-weixin weixin'></text><text class='cash-text' >微信钱包</text><text class='cashdui {{_num==1?"icon-yixuan":""}}'></text></view>-->
     </view>
 </view>
     <form bindsubmit="formSubmit">
         <view class='information' hidden='{{_num==0?false:true}}'>
             <view class='information-li flex'><label>持卡人</label><input type='text' placeholder-class='placeholder' placeholder='某某人' name="name"/></view>
-            <view class='information-li flex'><label>卡号</label><input type='number' placeholder-class='placeholder' placeholder='请输入银行卡号' name="cardnum"></input></view>
+            <view class='information-li flex'><label>卡号</label><input type='number' placeholder-class='placeholder' placeholder='请输入正确的银行卡号' name="cardnum"></input></view>
              <view class='information-li flex'><label>提现金额</label><input type='number' placeholder-class='placeholder' placeholder='最低提现金额为{{minmoney}}' name="money"></input></view>
             <view class='information-li flex'>
                 <label class='bankname'>银行</label>

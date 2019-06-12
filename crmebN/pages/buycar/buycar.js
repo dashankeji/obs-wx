@@ -6,6 +6,7 @@ var app = getApp();
 Page({
   data: {
     CustomBar: app.globalData.CustomBar,
+    StatusBar: app.globalData.StatusBar,
     isAttrInfo:'attrInfo',
     itemAttrInfo : '',
     foothidden:false,

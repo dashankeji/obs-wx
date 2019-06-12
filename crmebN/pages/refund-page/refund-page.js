@@ -7,6 +7,8 @@ Page({
    */
   data: {
     url: app.globalData.urlImages,
+    CustomBar: app.globalData.CustomBar,
+    StatusBar: app.globalData.StatusBar,
     index: 0,
     orderId:'',
     dataimg:[],

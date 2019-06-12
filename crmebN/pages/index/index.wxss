@@ -1,3 +1,6 @@
+.view{position: fixed ; /*相对定位*/height:82rpx;width:82rpx;border-radius:50%;color: white;text-align: center;z-index:99;right:10rpx;margin: 0% 0rpx -41rpx 0%;}
+.view button{width:82rpx;height:82rpx;padding: 0;margin: 0;border-radius:50%;}
+
 page{
   background-color: #fff;
 }

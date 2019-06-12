@@ -1,13 +1,7 @@
-<!--产品列表标题加图标返回-->
-<view class="wrap_title bg-white solid-bottom">
-      <view class="cu-custom" style="height:{{CustomBar}}px;">
-        <view class="cu-bar fixed" style="height:{{CustomBar}}px;">
-          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>产品列表</text>
-          </navigator>
-        </view>
-      </view>
-</view>
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '产品列表', iconFlag: true }}" />
+
 <view class='product'>
     <view class='header flex'>
        <form bindsubmit="searchSubmit" report-submit='true'>

@@ -1,14 +1,7 @@
 <view id="wrap">
-<!--应季果蔬标题加图标返回-->
-<view class="wrap_title bg-white solid-bottom">
-      <view class="cu-custom" style="height:{{CustomBar}}px;">
-        <view class="cu-bar fixed" style="height:{{CustomBar}}px;">
-          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-              <text class='text-xxl text-bold'>欧柏尚电器</text>
-          </navigator>
-        </view>
-      </view>
-</view>
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '欧柏尚电器', iconFlag: false }}" />
 <!--蔬菜和水果导航信息-->
 <view style="padding-top">
           <view class="flex flex-wrap light" style="background-color:#e6e6e6">

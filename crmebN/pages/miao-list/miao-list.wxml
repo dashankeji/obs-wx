@@ -1,14 +1,7 @@
 <view id="wrap">
-<!--热销产品标题加图标返回-->
-<view class="wrap_title bg-white">
-      <view class="cu-custom" style="height:{{CustomBar}}px;">
-        <view class="cu-bar fixed" style="height:{{CustomBar}}px;">
-          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-            <text class='icon-iconfontback' style="font-size:20px"></text>  <text class='text-xxl text-bold'>热销产品</text>
-          </navigator>
-        </view>
-      </view>
-</view>
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '热销产品', iconFlag: true }}" />
 <!--菜单和店家切换-->
 <view class="flex flex-wrap bg-white solid-top">
       <view class='basis-df padding radius text-center text-xl {{tabSelectCssFlag[0]?"tahSelectCss":""}}' data-id="{{menuSwitcnTitle[0].id}}" bindtap='tabClickMenu'>{{menuSwitcnTitle[0].cate_name}}</view>

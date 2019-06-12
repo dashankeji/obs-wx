@@ -1,3 +1,7 @@
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '退款', iconFlag: true }}" />
+
 <view class="refundPage">
       <block wx:for="{{order.cartInfo}}">
           <view class='refundPage-header flex'>

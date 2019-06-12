@@ -1,6 +1,7 @@
-<import src ="../GB_topHeader/index.wxml"/>
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '商品码', iconFlag: true }}" />
 
-<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '商品码' }}" />
 <view class='promotion-card'>
     <view class='title flex'>
         <view class='line'></view>

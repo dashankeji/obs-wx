@@ -1,12 +1,7 @@
-<view class="wrap_title bg-white solid-bottom">
-      <view class="cu-custom" style="height:{{CustomBar}}px;">
-        <view class="cu-bar fixed" style="height:{{CustomBar}}px;">
-          <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-             <text class='icon-iconfontback' style="font-size:20px"></text> <text class='text-xxl text-bold'>退款/售后</text>
-          </navigator>
-        </view>
-      </view>
-</view>
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '退款/售后', iconFlag: true }}" />
+
 <view class="head">
   <input placeholder='输入订单号' value="{{search}}" confirm-type="search" bindconfirm="searchSubmit" bindinput="searchInput"></input>
   <view class='iconfont icon-xiazai5'></view>

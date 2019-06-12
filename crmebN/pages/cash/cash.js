@@ -2,6 +2,7 @@ var app = getApp();
 // pages/cash/cash.js
 Page({
   data: {
+    StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     ooo:'',
     _num:0,
@@ -160,11 +161,16 @@ Page({
       success: function (res) {
         that.setData({
           money: (that.data.money - list.money).toFixed(2)
-        })
+        });
         wx.showToast({
           title: res.data.msg,
           icon: 'success',
-          duration: 1500
+          duration: 1500,
+          complete:	function(){  
+            wx.redirectTo({
+              url: "../extension/extension"
+            });  
+          }
         })
       }
     })
