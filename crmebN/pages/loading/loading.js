@@ -9,7 +9,8 @@ Page({
     logo: '',
     name: '',
     url: app.globalData.url,
-    flag: true
+    flag: true,
+    onClickFlag: false
   },
 
   /**
@@ -22,9 +23,25 @@ Page({
     if (options.scene) app.globalData.spid = options.scene;  
     that.setSetting();
   },
-
+  onClickGoHelpPage: function(){
+      wx.navigateTo({
+        url: '/pages/helpPage/index',
+      });
+  },
+  onClicksetSetting: function(){
+    this.setData({
+       onClickFlag: false
+    });
+    this.setSetting();
+  },
   setSetting: function () {
     var that = this;
+    setTimeout(function () {
+        that.setData({
+          onClickFlag: true
+        });
+    },7000);
+
     wx.getSetting({
       success(res) {
         if (!res.authSetting['scope.userInfo']){
@@ -34,7 +51,17 @@ Page({
         }else{
           that.getUserInfo();
         }
-      }
+      },
+      fail: function () {
+        wx.showToast({
+          title: "获取授权设置失败",
+          icon: 'none',
+          duration: 2000
+        });
+        wx.navigateTo({
+          url: '/pages/helpPage/index',
+        });
+      },
     })
   },
   getUserInfo: function () {
@@ -42,7 +69,17 @@ Page({
     wx.getUserInfo({
       lang: 'zh_CN',
       success: function (res) {
-        var userInfo = res.userInfo
+        var userInfo = res.userInfo;
+        
+        if (!userInfo) {
+          wx.showToast({
+            title: "获取用户授权信息失败",
+            icon: 'none',
+            duration: 2000
+          });
+          return;
+        };
+
         wx.login({
           success: function (res) {
             if (res.code) {
@@ -74,10 +111,20 @@ Page({
             }
           },
           fail: function () {
+            wx.showToast({
+              title: "获取code失败",
+              icon: 'none',
+              duration: 2000
+            });
           },
         })
       },
       fail: function () {
+        wx.showToast({
+          title: "授权获取失败",
+          icon: 'none',
+          duration: 2000
+        });
       },
     })
   },

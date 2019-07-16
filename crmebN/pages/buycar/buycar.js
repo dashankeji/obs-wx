@@ -74,9 +74,6 @@ Page({
   onLoad: function (options) {
     app.setBarColor();
     app.setUserInfo();
-    this.carnum();
-    this.countmoney();
-    this.getList();
   },
   btntap: function (e) {
     this.data.foothidden = !this.data.foothidden;
@@ -457,6 +454,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      isAttrInfo: 'attrInfo',
+      itemAttrInfo: '',
+      foothidden: false,
+      url: app.globalData.urlImages,
+      countmoney: "",
+      cartNum: "",
+      isAllSelect: false,
+      minusStatus: 'disabled',
+      cartList: [],
+      cartInvalid: [],
+      cartIdsStr: ''
+    });
     this.carnum();
     this.countmoney();
     this.getList();

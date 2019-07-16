@@ -125,7 +125,7 @@ Page({
 
   },
   onShow: function () {
-    app.setUserInfo();
+    
   },
   tapsize: function (e) {
     var that = this;

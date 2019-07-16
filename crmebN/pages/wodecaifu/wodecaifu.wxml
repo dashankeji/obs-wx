@@ -8,8 +8,8 @@
   <image src='{{userinfo.avatar}}' class='avatar'></image>
   <view class='name'>{{userinfo.nickname}}</view>
   <!-- <text wx:if="{{userinfo.level==0}}">[普通用户]</text> -->
-</view>
-<!--订单详情-->
+
+  <!--订单详情-->
 <view class='user-list-warapper'>
    <view class='item-box amount flex'>
     <view class='amount-item' bindtap='money'>
@@ -62,3 +62,4 @@
     </view>
   </view>
   </view>
+</view>

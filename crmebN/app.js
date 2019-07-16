@@ -5,9 +5,9 @@ App({
   onLaunch: function () {
     // 展示本地存储能力
     var that = this;
-    var logs = wx.getStorageSync('logs') || []
+  /*  var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    wx.setStorageSync('logs', logs)*/
    // that.getRoutineStyle();
     wx.getSystemInfo({
       success: e => {
@@ -29,7 +29,7 @@ App({
     openPages:'',
     spid:0,
     urlImages: '',
-    url: 'https://obs.obersun.com'
+    url: 'https://obs.largehill.net/'
   },
   getRoutineStyle:function(){
     var that = this;

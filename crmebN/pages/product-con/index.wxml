@@ -32,7 +32,11 @@
 
     <view class='price-wrapper flex justify-between'>
       <view class='price'><text>￥</text>{{storeInfo.price}}</view>
-      <view class='price-two'><text>原价: {{storeInfo.ot_price}}</text></view>
+      <view class='price-two'>
+          <text>原价: </text>
+          <text style="color:#b3b3b3">{{storeInfo.ot_price}}</text>
+          <text class="price-two-icon" style='width:{{price_two_icon_width}}px'></text>
+      </view>
       <view class='' bindtap='shangPinCodeClick'><text class="icon-erweima" style="font-size:28rpx">商品码</text></view>
      <!-- <block wx:for="{{storeKeyWord}}" wx:if="{{index < 4}}">
         <view class='small-txt red' wx:if="{{!index && item != ''}}">{{item}}</view>
@@ -59,9 +63,10 @@
     <view class="bg-white">
           <view class="padding-sm">
               <view class="text-xxl padding-bottom">图文详情</view>
-              <view wx:for="{{description}}" wx:key>
+              <!--<view wx:for="{{description}}" wx:key>
                   <image src="{{item}}" mode='widthFix' style="width:100%"></image>
-              </view>
+              </view>-->
+               <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
           </view>
     </view>
 </view>

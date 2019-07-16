@@ -1,19 +1,21 @@
+.wxParse-img{
+  width: 100% !important;
+  display: block !important;
+}
+
 .price-two{
    position: relative;
    color: #ccc;
    font-size: 25rpx;
-   width:156rpx;
    height:34rpx;
 }
 
-.price-two::after{
-  content: "";
+.price-two-icon{
   position: absolute;
-  top:18rpx;
-  left: 70rpx;
+  top:19rpx;
+  left: 59rpx;
   display: block;
-  width:70rpx;
-  height:5rpx;
+  height:3rpx;
   background-color: #ccc;
 }
 

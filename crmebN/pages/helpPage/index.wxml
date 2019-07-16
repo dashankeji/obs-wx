@@ -1,0 +1,20 @@
+<!--pages/helpPage/index.wxml-->
+<!--标题-->
+<import src ="../GB_topHeader/index.wxml" />
+<template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '帮助', iconFlag: true }}" />
+
+<view class='padding' style="font-weight:bold">
+  <view class="margin-bottom">
+       <text>如果一直进不去小程序的话，可以先把小程序删除了再重新进入试试</text>
+  </view>
+  <view class="margin-bottom">
+      <text style="color:red">iOS 微信：进入微信中的「发现」-「小程序」，将不想要的小程序从右往左划动，然后点击红色的「删除」按钮即可。</text>
+      <image src="https://obs.largehill.net/public/helpImage/QQ图片20190626101616.png" mode="widthFix" style='width:100%;display:block;'></image>
+  </view>
+  <view class="margin-bottom">
+      <text style="color:red">Android 微信：进入微信中的「发现」-「小程序」，长按不想要的小程序，然后点击「删除」按钮即可。</text>
+      <image src="https://obs.largehill.net/public/helpImage/QQ图片20190626101950.png" mode="widthFix" style='width:100%;display:block;'></image>
+  </view>
+  <view> <text>删除之后，只需重搜索或扫码，就可以再次打开小程序啦。</text> </view>
+</view>
+

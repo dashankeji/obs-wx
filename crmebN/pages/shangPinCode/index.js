@@ -234,7 +234,19 @@ Component({
         ctx.setFillStyle('black');
         ctx.setTextAlign('left');
 
-        ctx.fillText(options.store_name, X + 8, Y + 20);
+        var storeNameArray = options.store_name.split("");
+        var temp = '';
+
+        for (var l = 0; l < storeNameArray.length; l++) {
+          if (ctx.measureText(temp).width + 8 * l + 8 < width) {
+            temp += storeNameArray[l];
+          } else {
+            temp += '...';
+            break;
+          };
+        };
+
+        ctx.fillText(temp, X + 8, Y + 20);
 
         Y = Y + width / 4 - 10;
         ctx.font = 'normal bold 22rpx sans-serif';

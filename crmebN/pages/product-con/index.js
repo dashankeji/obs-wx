@@ -51,6 +51,7 @@ Page({
         actionSheetHidden:true,
         offset: 1,
         IconBack: false,
+        price_two_icon_width: 0,
         TabDate: {
           0: [
           ]}
@@ -151,7 +152,7 @@ Page({
         };
 
         app.globalData.openPages = '/pages/product-con/index?id=' + store_id;
-        app.setBarColor();
+       // app.setBarColor();
         var that = this;
         app.setUserInfo();
         that.getCartCount();
@@ -183,7 +184,7 @@ Page({
                         productValue: res.data.data.productValue,
                         reply: res.data.data.reply,
                         replyCount: res.data.data.replyCount,
-                        description: res.data.data.storeInfo.description.match(/http[0-9a-z\-\_\.\:\/\\\?\~\@]+\.[a-z]+g/g),
+                      //description: res.data.data.storeInfo.description.match(/http[0-9a-z\-\_\.\:\/\\\?\~\@]+\.[a-z]+g/g),
                         collect:res.data.data.storeInfo.userCollect,
                         [image]: res.data.data.storeInfo.image,
                         [stock]: res.data.data.storeInfo.stock,
@@ -195,16 +196,22 @@ Page({
                    /* that.downloadFilestoreImage();
                     that.downloadFilePromotionCode();*/
                     that.likeDataFun();
-                    //WxParse.wxParse('description', 'html', that.data.description, that, 0);
+                    WxParse.wxParse('content', 'html', res.data.data.storeInfo.description, that, 0);
+                  //获取原价价格在页面所占
+                  var query = wx.createSelectorQuery();
+                  //选择id
+                  query.select('.price-two').boundingClientRect(function (rect) {
+                    that.setData({
+                      price_two_icon_width: rect.width - 23
+                    });
+                  }).exec();
                 }else{
                     wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
                         duration: 1000
-                    })
-                    setTimeout(function(){
-                        wx.navigateBack({});
-                    },1200)
+                    });
+
                 }
             }
         });

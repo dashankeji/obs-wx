@@ -77,13 +77,12 @@ Page({
    */
   onLoad: function (options) {
 
-    //app.setBarColor();
+    app.setBarColor();
     var that = this;
     if (options.spid) {
       app.globalData.spid = options.spid
     }
-    if (options.scene) app.globalData.spid = options.scene; 
-    //app.setUserInfo();
+    app.setUserInfo();
 
     that.ClassificationListReq();
   },
@@ -94,7 +93,7 @@ Page({
     };
     var that = this;
     wx.request({
-      url: app.globalData.url + '/routine/new_api/index' + '?cateIdAll=' + cateIdAll,
+      url: app.globalData.url + '/routine/auth_api/index?uid=' + app.globalData.uid + '&cateIdAll=' + cateIdAll,
       method: 'POST',
       header: header,
       success: function (res) {
@@ -134,7 +133,7 @@ Page({
     };
     var that = this;
     wx.request({
-      url: app.globalData.url + '/routine/new_api/get_product_category',
+      url: app.globalData.url + '/routine/auth_api/get_product_category?uid=' + app.globalData.uid,
       method: 'POST',
       header: header,
       success: function (res) {
@@ -161,7 +160,7 @@ Page({
           'content-type': 'application/x-www-form-urlencoded',
         };
         wx.request({
-          url: app.globalData.url + '/routine/new_api/pidStoreCategoryGetSonAllStore' + '?pid=' + that.data.pid,
+          url: app.globalData.url + '/routine/auth_api/pidStoreCategoryGetSonAllStore?uid=' + app.globalData.uid + '&pid=' + that.data.pid,
           data: { limit: 8, offset: 0 },
           method: 'POST',
           header: header,

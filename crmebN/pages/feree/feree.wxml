@@ -13,7 +13,7 @@
            <view class='feree-conter'>
                <view class='feree-name'>{{item.nickname}}</view>
                <view class='feree-text'>
-               <text>关注时间: {{item.add_time}}</text>\r\n\r\n\r\n\r\n
+               <text>关注时间: {{item.add_time}}　　</text>
                 <text>消费金额: {{item.price}}</text>
                </view>
            </view>

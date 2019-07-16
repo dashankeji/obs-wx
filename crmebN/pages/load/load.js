@@ -25,8 +25,18 @@ Page({
   //获取用户信息并且授权
   getUserInfo: function(e){
     var userInfo = e.detail.userInfo;
-   
+    
+    if (!userInfo){
+      wx.showToast({
+        title: "获取用户授权信息失败",
+        icon: 'none',
+        duration: 2000
+      });
+      return;
+    };
+
     userInfo.spid = app.globalData.spid;
+
     wx.login({
       success: function (res) {
         if (res.code) {
@@ -39,19 +49,20 @@ Page({
               info: userInfo
             },
             success: function (res) {
-            
+              
               app.globalData.uid = res.data.data.uid;
               app.globalData.openid = res.data.data.routine_openid; 
              
               if (app.globalData.openPages != undefined && app.globalData.openPages.indexOf("/pages/product-con/index") != -1) {//跳转到指定页面
                 wx.navigateTo({
                   url: app.globalData.openPages
-                })
+                });
+                
               } else {//跳转到首页
                 if(res.data.data.page){
                     wx.navigateTo({
                         url: res.data.data.page
-                    })
+                    });
                 }else{
                     wx.reLaunch({
                         url: '/pages/index/index'
@@ -63,7 +74,14 @@ Page({
         } else {
           console.log('登录失败！' + res.errMsg)
         }
-      }
+      },
+      fail: function () {
+        wx.showToast({
+          title: "获取code失败",
+          icon: 'none',
+          duration: 2000
+        });
+      },
     })
   },
 })

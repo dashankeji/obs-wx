@@ -42,17 +42,6 @@ Page({
       'content-type': 'application/x-www-form-urlencoded',
     };
     var that = this;
-    wx.request({
-      url: app.globalData.url + '/routine/auth_api/my?uid=' + app.globalData.uid,
-      method: 'POST',
-      header: header,
-      success: function (res) {
-        that.setData({
-          userinfo: res.data.data,
-          orderStatusNum: res.data.data.orderStatusNum
-        })
-      }
-    });
 
     wx.request({
       url: app.globalData.url + '/routine/auth_api/gerenzhongxinbgget?uid=' + app.globalData.uid,

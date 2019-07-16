@@ -56,7 +56,7 @@
           <view style="height:200rpx;line-height:200rpx;text-align:center;font-size:60rpx;background-image:url({{haoQiZhuHaoFanBgImg[index]}});background-size:100% 100%;color:#fff">
           </view>
     </view>
-    <view id="the-id" class="padding" style="background-image:url(https://obs.largehill.net/public/uploads/shouYeShangPingBg/bg.jpg);background-size:cover;background-position:center;">
+    <view id="the-id" class="" style="background-image:url(https://obs.largehill.net/public/uploads/shouYeShangPingBg/bg.jpg);background-size:cover;background-position:center;">
     <block wx:for="{{item}}"  wx:key>
         <navigator class="none" url="/pages/product-con/index?id={{item.id}}" open-type="navigate" hover-class="none">
           <view class="flex justify-between margin-bottom-sm" style="box-shadow:0 0 5rpx #ccc;background-color:#fff">
