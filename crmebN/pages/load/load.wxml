@@ -2,7 +2,8 @@
      <view class='white'>
         <view class='pictrue'></view>
         <view class='tip'>您的信息和数据将受到保护</view>
-        <button class='but' type="primary" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">授权并登录</button> 
+        <button class='but' type="primary" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">授权并登录</button>
+        <button class='buts' type="primary" bindtap='backHomePage' style='background-color: 	#778899'>暂不登录</button>
      </view>
      <view class='mask'></view>
 </view>

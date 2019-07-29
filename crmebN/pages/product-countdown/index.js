@@ -9,6 +9,8 @@ Page({
    */
   data: {
     url: app.globalData.urlImages,
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
     indicatorDots: true,//是否显示面板指示点;
     autoplay: true,//是否自动播放;
     interval: 3000,//动画间隔的时间;

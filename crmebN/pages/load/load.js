@@ -8,6 +8,11 @@ Page({
   onLoad: function (options) {
     var that = this;
   },
+  backHomePage: function(){
+    wx.reLaunch({
+      url: '/pages/index/index'
+    })
+  },
   getEnterLogo: function () {
     var that = this;
     wx.request({

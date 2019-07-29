@@ -62,11 +62,17 @@
                         <image src='{{url}}{{item.productInfo.image}}'></image>
                  </navigator> 
                 <view class='pro-info'>
-                  <view class='title flex justify-between'>
-                       <view>{{item.productInfo.store_name}}</view>
-                       <view class='price'><text>￥</text>{{item.truePrice}}<view class='count'>x{{item.cart_num}}</view></view>
+                  <view class='titles'>
+                       <view style='width:85%'><text class="my_text_2">{{item.productInfo.store_name}}</text></view>
                   </view>
-                  <view class='res' wx:if="{{item.productInfo.attrInfo}}">{{item.productInfo.attrInfo.suk}}</view>
+                  <view class='price' style='width:100%;text-align:right;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;'><text>￥</text>{{item.truePrice}}</view>
+                  <view class='count flex' style="margin-top:4rpx">
+                    <view style="width:60%" class='res' >
+                       <block wx:if="{{item.productInfo.attrInfo}}">{{item.productInfo.attrInfo.suk}}</block>
+                    </view>
+                    <view style="width:37%;margin-left:3%;overflow:hidden;white-space: nowrap;text-overflow: ellipsis;text-align:right">x{{item.cart_num}}</view>
+                  </view>
+
                 </view>
                 <navigator wx:if="{{ordercon._status._type==3}}" hover-class="none" url='/pages/comment-con/comment-con?unique={{item.unique}}&uni={{ordercon.order_id}}' class='assess-btn'>评价</navigator>
                 <view wx:elif="{{ordercon._status._type==4}}" class='assess-btn off'>已评价</view>

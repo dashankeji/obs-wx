@@ -2,6 +2,8 @@ var app = getApp();
 var wxh = require('../../utils/wxh.js');
 Page({
   data: {
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
     Arraylist: [],
     insertTime: [],
     timeer: '',

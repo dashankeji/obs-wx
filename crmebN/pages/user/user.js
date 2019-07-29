@@ -9,6 +9,7 @@ Page({
   data: {
   CustomBar: app.globalData.CustomBar,
   StatusBar: app.globalData.StatusBar,
+  uid: null,
   url: app.globalData.urlImages,
   userinfo:[],
   orderStatusNum:[],
@@ -36,8 +37,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.setBarColor();
-    app.setUserInfo();
+    //app.setBarColor();
+    //app.setUserInfo();
+   
+  },
+  goToLogin: function() {
+    wx.navigateTo({
+      url: '/pages/load/load',
+    })
+  },
+  bannerImgDataReq: function() {
     var header = {
       'content-type': 'application/x-www-form-urlencoded',
     };
@@ -48,14 +57,14 @@ Page({
       method: 'GET',
       header: header,
       success: function (res) {
-  
+
         that.setData({
           bannerImgData: res.data[0]
         });
       }
     });
   },
-  goNotification:function(){
+  goNotification: function() {
       wx.navigateTo({
         url: '/pages/news-list/news-list',
       })
@@ -65,6 +74,14 @@ Page({
       'content-type': 'application/x-www-form-urlencoded',
     };
     var that = this;
+        that.data.uid = null;
+        that.setData({
+          uid: app.globalData.uid
+        });
+
+        if(that.data.uid == null){
+          return;
+        }
     wx.request({
       url: app.globalData.url + '/routine/auth_api/my?uid=' + app.globalData.uid,
       method: 'POST',
@@ -76,6 +93,7 @@ Page({
         })
       }
     });
+    that.bannerImgDataReq();
   },
   /**
    * 生命周期函数--我的财富 

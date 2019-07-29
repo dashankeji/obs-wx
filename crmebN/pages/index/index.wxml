@@ -9,6 +9,12 @@
 <import src ="../GB_topHeader/index.wxml" />
 <template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '欧柏尚电器', iconFlag: false }}" />
 
+<view class='loop-text'>
+   <view class="marquee_text" style="{{orientation}}:{{marqueeDistance}}px;font-size: {{size}}px;">
+     {{text}}
+  </view>
+</view>
+
 <!--<view class="flex">
     <view style='flex-basis: 20%;'>
           <image src="http://127.0.0.3/public/uploads/attach/2019/04/24/5cbfc73b976a8.png" mode='aspectFill' style="width:100%"></image>
@@ -40,7 +46,7 @@
 <view class="wrap_nav">
     <view class="flex padding justify-between">
         <view class='text-center' wx:for="{{menus}}" wx:key="{{index}}">
-            <navigator class="none" url="{{index> 2 ? '/pages/wodecaifu/wodecaifu' : item.url}}" open-type="navigate" hover-class="none">
+            <navigator class="none" url="{{item.url}}" open-type="navigate" hover-class="none">
                     <view class="" style="width:100rpx;height:100rpx;background-image:url({{item.pic}});background-size:100% 100%;margin-top:10rpx"></view>
                     <view class='text-black text-bold' style="font-size:23rpx;margin-top:10rpx">{{item.name}}</view>
             </navigator>

@@ -177,7 +177,8 @@ Page({
     }
   },
   onLoad: function () {
-    app.setUserInfo();
+    
+    if(app.globalData.uid == null) return;
     // 获取系统信息
     var that = this;
     wx.getSystemInfo({

@@ -60,7 +60,7 @@
                                             <view class="cu-avatar xl" style="background-image:url({{item.image}})"></view>
                    </navigator>
                                             <view class='content padding-left' style='position:relative'>
-                                                  <view class="text-xl" style="width:70%;overflow:hidden">{{item.store_name}}</view>
+                                                  <view class="text-xl my_text_2" style="width:100%;">{{item.store_name}}</view>
                                                   <view class="text-sm text-grey margin-top-xs" style="width:70%;overflow:hidden">{{allShoppingShouCangres[index]}}人收藏</view>
                                                   <view style="position:absolute;left:20rpx;bottom:10rpx;font-size:38rpx;color:red">
                                                       <view class=''>￥{{item.price}}</view>

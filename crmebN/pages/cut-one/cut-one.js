@@ -9,6 +9,8 @@ Page({
    */
   data: {
     uid: app.globalData.uid,//登录人uid
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
     bargainUid:0,//参与砍价uid
     bargainUserInfo:[],//参与人信息
     bargainId:0,//砍价产品ID

@@ -25,7 +25,36 @@ Page({
     hidden: false,
     haoQiZhuHaoFanBgImg: [],
     pid: -1,
-    top: '-10%'
+    top: '-10%',
+    /**
+     * 走马灯
+     */
+    text: '应召小程序内用户帐号登录规范调整和优化建议,需要把用户登录改为引导方式，望见谅下',
+    marqueePace: .5, //滚动速度
+    marqueeDistance: 0, //初始滚动距离
+    marqueeDistance2: 0,
+    marquee2copy_status: false,
+    marquee2_margin: 60,
+    size: 14,
+    orientation: 'left', //滚动方向
+    intervalTwo: 20, // 时间间隔
+  },
+  run: function () {
+    let vm = this;
+    let interval = setInterval(function () {
+
+      if (vm.data.marqueeDistance > -vm.data.length) {
+        vm.setData({
+          marqueeDistance: vm.data.marqueeDistance - vm.data.marqueePace,
+        });
+      } else {
+        clearInterval(interval);
+        vm.setData({
+          marqueeDistance: vm.data.windowWidth
+        });
+        vm.run();
+      }
+    }, vm.data.intervalTwo);
   },
   setTouchMove: function () {
 
@@ -225,7 +254,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let vm = this;
+    let length = vm.data.text.length * vm.data.size; //文字长度
+    let windowWidth = wx.getSystemInfoSync().windowWidth; // 屏幕宽度
+    vm.setData({
+      length: length,
+      windowWidth: windowWidth,
+      marquee2_margin: length < windowWidth ? windowWidth - length : vm.data.marquee2_margin //当文字长度小于屏幕长度时，需要增加补白
+    });
+    vm.run(); // 水平一行字滚动完了再按照原来的方向滚动
   },
   ClassificationListReqID: function (arr, arrName) {    //获取分类id
     for (var i = 0; i < arr.length; i++) {

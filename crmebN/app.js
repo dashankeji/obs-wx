@@ -29,7 +29,7 @@ App({
     openPages:'',
     spid:0,
     urlImages: '',
-    url: 'https://obs.largehill.net/'
+    url: 'https://obs.largehill.net'
   },
   getRoutineStyle:function(){
     var that = this;
@@ -55,13 +55,13 @@ App({
     var that = this;
     if (that.globalData.uid == null) {//是否存在用户信息，如果不存在跳转到首页
        wx.showToast({
-         title: '用户信息获取失败',
+         title: '需要先登录',
          icon: 'none',
          duration: 1500,
        })
       setTimeout(function () {
-        wx.navigateTo({
-          url: '/pages/load/load',
+        wx.reLaunch({
+          url: '/pages/user/user',
         })
       }, 1500)
     }
