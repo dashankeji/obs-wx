@@ -16,6 +16,7 @@ Page({
   bannerImgData:[],
   coupon:'',
   collect:'',
+  show: false,
   ListTitleData: {               //付款状态下面的列表数据
       0: [{ title: '我的积分' }, { title: '我的拼团' }, { title: '我的秒杀' }],
       1: [
@@ -33,13 +34,18 @@ Page({
     var that = this;
     wxh.home(that, e);
   },
+  hiddenShow: function() {
+      this.setData({
+        show: false
+      })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     //app.setBarColor();
     //app.setUserInfo();
-   
+    this.bannerImgDataReq();
   },
   goToLogin: function() {
     wx.navigateTo({
@@ -53,7 +59,7 @@ Page({
     var that = this;
 
     wx.request({
-      url: app.globalData.url + '/routine/auth_api/gerenzhongxinbgget?uid=' + app.globalData.uid,
+      url: app.globalData.url + '/routine/auth_api/gerenzhongxinbgget?uid=' + app.globalData.uid + '&xiaoben=true',
       method: 'GET',
       header: header,
       success: function (res) {
@@ -80,8 +86,11 @@ Page({
         });
 
         if(that.data.uid == null){
+          that.setData({
+            show: true  
+          });
           return;
-        }
+        };
     wx.request({
       url: app.globalData.url + '/routine/auth_api/my?uid=' + app.globalData.uid,
       method: 'POST',
@@ -93,7 +102,7 @@ Page({
         })
       }
     });
-    that.bannerImgDataReq();
+    
   },
   /**
    * 生命周期函数--我的财富 

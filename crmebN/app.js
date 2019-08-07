@@ -60,7 +60,7 @@ App({
          duration: 1500,
        })
       setTimeout(function () {
-        wx.reLaunch({
+        wx.switchTab({
           url: '/pages/user/user',
         })
       }, 1500)

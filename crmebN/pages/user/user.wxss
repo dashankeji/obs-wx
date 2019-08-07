@@ -1,3 +1,11 @@
+.height_auto{
+   position: relative;
+   top: 0;
+   left: 0;
+   height: 100%;
+   overflow: hidden;
+}
+
 .icon-text-color{
   color: #f95516;
 }
@@ -296,7 +304,7 @@ width:20%;
 }
 
 /* pages/user/user.wxss */
-page{position: relative;background-color:#fff}
+page{position: relative;background-color:#fff;height:100%}
 .header{width: 100%; height: 300rpx; background-image: linear-gradient(to bottom,#ff6c00,#ff3d3d);flex-direction: column; color: #fff; align-items: center; justify-content: center; font-size: 26rpx;position:relative;}
 .header .system-notification{position: absolute;right: 30rpx;top: 46rpx;font-size:46rpx;}
 .header .system-notification .system-notification-text{position:absolute;top:-5rpx;right:-3rpx;font-size:18rpx;background-color:#fff;border-radius:50%;color:#ff3d3d;
@@ -304,7 +312,7 @@ min-width:26rpx;height:26rpx;text-align:center;line-height:26rpx;}
 .header .avatar{width: 130rpx; height: 130rpx; border-radius: 50%; border: 6rpx solid rgba(255,255,255,.5)}
 .header text{font-size: 22rpx;}
 .header .name{margin: 13rpx 0 7rpx 0;}
-.user-list-warapper{position: absolute; top:420rpx; left: 50%; width: 710rpx; margin-left: -355rpx;}
+.user-list-warapper{position: absolute; top:420rpx; left: 50%; width: 710rpx; margin-left: -355rpx;z-index:90}
 .user-list-warapper .item-box{margin-bottom: 30rpx; background-color: #fff; border-radius: 5px; box-shadow: 1px 2px 2px 1px #eee;}
 .amount{height: 150rpx; align-items: center;}
 .amount .amount-item{flex: 1 25%; text-align:  center; font-size: 24rpx; color: #555;}

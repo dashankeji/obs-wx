@@ -1,8 +1,25 @@
+<view class="{{ show == true ? 'height_auto' : 'wrap'}}">
 <!--标题-->
 <import src ="../GB_topHeader/index.wxml" />
 <template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '个人中心', iconFlag: false }}" />
 
-<view class='header flex' style="background-image:url({{ bannerImgData.url || '../../images/14M58PICAfK_1024.jpg' }});background-size:100% 100%;">
+<!--登录提示弹窗-->
+<block wx:if="{{show}}">
+        <view bindtap='hiddenShow' style='position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.7);z-index:98'></view>
+        <view class="text-center" style='position:absolute;top:{{CustomBar + 10}}px;right:20rpx;box-shadow: 0rpx 10rpx 100rpx 0rpx rgba(0,0,0,.7);border-radius:15rpx;z-index:99;background-color:#fff;color:black;'>
+            <view class="padding-top-xs text-bold">登录提示</view>
+            <view style='position:absolute;right:20rpx;top:10rpx;color:red' bindtap='hiddenShow'>X</view>
+            <view class="padding">
+                <view>
+                    <image src='../../images/loginAv.png' style='width: 130rpx; height: 130rpx; border-radius: 50%; border: 6rpx solid rgba(255,255,255,.5)'></image>
+                    <view>点击该头像图标登录</view>
+                </view>
+            </view>
+        </view>
+</block>
+
+
+<view class='header flex' style="background-image:url({{ bannerImgData.url  }});background-size:100% 100%;">
  <block wx:if="{{uid}}">
     <view class='system-notification iconfont icon-pinglun' bindtap='goNotification'><text class="system-notification-text" wx:if="{{userinfo.notice > 0}}">{{userinfo.notice}}</text></view>
     
@@ -12,8 +29,8 @@
  </block>
  <block wx:else>
    <view class="text-center text-black" bindtap='goToLogin'>
-      <image src='../../images/loginAv.png' class='avatar'></image>
-      <view>点击这或上面图标登录</view>
+      <image src='../../images/loginAv.png' class='avatar' style='background-color:#fff'></image>
+      <view style="color:#fff">点击头像图标登录</view>
    </view>
  </block>
 </view>
@@ -144,5 +161,15 @@
      
     </view>
 </view>
-<view style="margin-top:20rpx;margin-bottom:15rpx;text-align:center;width:100%">技术支持: <text style='font-weight:bold'>大山科技</text></view>
+
+<block wx:if="{{!show}}">
+    <view style="margin-top:20rpx;margin-bottom:15rpx;text-align:center;width:100%">技术支持: <text style='font-weight:bold'>大山科技</text></view>
+</block>
+
 </view>
+</view>
+
+<block wx:if="{{show}}">
+    <view style="margin-top:20rpx;margin-bottom:15rpx;text-align:center;width:100%">技术支持: <text style='font-weight:bold'>大山科技</text></view>
+</block>
+
