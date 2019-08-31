@@ -283,6 +283,22 @@ Page({
       'content-type': 'application/x-www-form-urlencoded',
     };
 
+    if(allCheckNum.length < 1) {
+
+      wx.showModal({
+        title: '提示: 你还没有收藏商品呢',
+        content: '是否去浏览商品',
+        success: function(e){
+           if(e.confirm){
+             wx.reLaunch({
+                url: '/pages/index/index',
+              });
+           };
+        }
+      });
+      return;
+    };
+
     for (var i = 0; i < allCheckNum.length;) {
         if (allCheckNum[i] === 1) {
 
@@ -303,7 +319,7 @@ Page({
         wx.showToast({
           title: '正在删除',
           icon: 'success',
-          duration: 1200
+          duration: 1000
 
         });
         setTimeout(()=>{that.getcollect()},1000);
@@ -331,6 +347,7 @@ Page({
    */
   onLoad: function (options) {
     app.setUserInfo();
+    if(app.globalData.uid == null) return;
     this.getcollect();
   },
   getcollect: function () {    //我的收藏数据请求

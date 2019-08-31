@@ -38,7 +38,7 @@
     <!--底部操作-->
     <view class="flex justify-between padding text-red bg-white" style="position:fixed;bottom:0;left:0;width:100%">
                 <view class="flex" style="align-items:center">
-                        <text class="text-xxl icon-yuandianda {{allCheckFlag ? 'text-fff' : 'text-red'}}" bindtap="allCheckClcik" style=""></text>    
+                        <text class="text-xxl icon-yuandianda {{allCheckFlag ? 'text-fff' : 'text-red'}}" bindtap="allCheckClcik" style="margin-top:9rpx"></text>    
                         <text class="text-bold text-xl text-black"> 全选</text>
                 </view>
                <view style="background-color:red;color:#fff;padding:10rpx 45rpx;border-radius:15rpx" bindtap='allDeleteShoppingClick'>
