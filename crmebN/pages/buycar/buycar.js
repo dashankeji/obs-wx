@@ -73,7 +73,6 @@ Page({
   },
   onLoad: function (options) {
     app.setBarColor();
-    app.setUserInfo();
   },
   btntap: function (e) {
     this.data.foothidden = !this.data.foothidden;
@@ -454,6 +453,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    app.setUserInfo();
+    if(app.globalData.uid == null) return;
     this.setData({
       isAttrInfo: 'attrInfo',
       itemAttrInfo: '',

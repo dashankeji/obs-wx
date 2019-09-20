@@ -199,7 +199,7 @@ scroll-view.cu-steps .cu-item {
 .pro-list .list-wrapper .wrapper .item .pro-info .price{color: #ff3d3d; font-size: 32rpx;}
 .pro-list .list-wrapper .wrapper .item .pro-info .price text{font-size: 24rpx;}
 .pro-list .list-wrapper .wrapper .item .pro-info .price .count{color: #333;text-align: right;}
-.assess-btn{position: absolute; right: 20rpx; bottom: 20rpx; width: 120rpx; height: 50rpx; line-height: 50rpx; text-align: center;  background-color: #ff7000; color: #fff; border-radius: 3px;}
+.assess-btn{position: absolute; right: 64rpx; bottom: 20rpx; width: 120rpx; height: 50rpx; line-height: 50rpx; text-align: center;  background-color: #ff7000; color: #fff; border-radius: 3px;}
 .assess-btn.off{background-color: #cecece;}
 .payment-info{padding:0 20rpx 30rpx; border-top: 1px solid #f7f7f7;}
 .payment-info .infos{margin-top: 15rpx; align-items: center; justify-content: space-between;}

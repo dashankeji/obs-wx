@@ -9,11 +9,6 @@
 <import src ="../GB_topHeader/index.wxml" />
 <template is="headContent" data="{{CustomBar: CustomBar, StatusBar: StatusBar, text: '欧柏尚电器', iconFlag: false }}" />
 
-<view class='loop-text'>
-   <view class="marquee_text" style="{{orientation}}:{{marqueeDistance}}px;font-size: {{size}}px;">
-     {{text}}
-  </view>
-</view>
 
 <!--<view class="flex">
     <view style='flex-basis: 20%;'>

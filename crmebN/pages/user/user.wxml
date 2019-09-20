@@ -5,10 +5,10 @@
 
 <!--登录提示弹窗-->
 <block wx:if="{{show}}">
-        <view bindtap='hiddenShow' style='position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.7);z-index:98'></view>
-        <view class="text-center" style='position:absolute;top:{{CustomBar + 10}}px;right:20rpx;box-shadow: 0rpx 10rpx 100rpx 0rpx rgba(0,0,0,.7);border-radius:15rpx;z-index:99;background-color:#fff;color:black;'>
+        <view bindtap='hiddenShow' style='position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.7);z-index:9998'></view>
+        <view bindtap='hiddenShow' class="text-center" style='position:absolute;top:{{CustomBar + 10}}px;right:20rpx;box-shadow: 0rpx 10rpx 100rpx 0rpx rgba(0,0,0,.7);border-radius:15rpx;z-index:9999;background-color:#fff;color:black;'>
             <view class="padding-top-xs text-bold">登录提示</view>
-            <view style='position:absolute;right:20rpx;top:10rpx;color:red' bindtap='hiddenShow'>X</view>
+            <view style='position:absolute;right:20rpx;top:10rpx;color:red'>X</view>
             <view class="padding">
                 <view>
                     <image src='../../images/loginAv.png' style='width: 130rpx; height: 130rpx; border-radius: 50%; border: 6rpx solid rgba(255,255,255,.5)'></image>

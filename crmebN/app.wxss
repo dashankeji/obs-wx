@@ -49,6 +49,15 @@ image {
     font-style: normal;
 }
 
+/* 块级元素超出 */
+.block_my_text_1{
+white-space:nowrap;
+overflow:hidden;
+text-overflow:-o-ellipsis-lastline;
+text-overflow:ellipsis;
+-webkit-box-orient: vertical;
+}
+
 /*文字换到第1行时显示省略号*/
 .my_text_1 {
   text-overflow: -o-ellipsis-lastline;

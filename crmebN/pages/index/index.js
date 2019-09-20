@@ -254,15 +254,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let vm = this;
-    let length = vm.data.text.length * vm.data.size; //文字长度
-    let windowWidth = wx.getSystemInfoSync().windowWidth; // 屏幕宽度
-    vm.setData({
-      length: length,
-      windowWidth: windowWidth,
-      marquee2_margin: length < windowWidth ? windowWidth - length : vm.data.marquee2_margin //当文字长度小于屏幕长度时，需要增加补白
-    });
-    vm.run(); // 水平一行字滚动完了再按照原来的方向滚动
+
   },
   ClassificationListReqID: function (arr, arrName) {    //获取分类id
     for (var i = 0; i < arr.length; i++) {

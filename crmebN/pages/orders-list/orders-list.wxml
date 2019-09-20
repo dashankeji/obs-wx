@@ -17,7 +17,7 @@
   <block wx:for="{{orderlist}}">
       <view class='items'>
         <view class='numbers flex'>
-            <view><text>订单号</text>：{{item.order_id}}</view>
+            <view class="block_my_text_1" style="width:75%;"><text>订单号</text>：{{item.order_id}}</view>
             <icon wx:if="{{item._status._type == 4}}" class='iconfont icon-shanchu del' bindtap='delOrder' data-uni='{{item.order_id}}'></icon>
              <navigator hover-class="none" url='/pages/orders-con/orders-con?order_id={{item.order_id}}'>
                  <view class='buypays'>订单详情</view>

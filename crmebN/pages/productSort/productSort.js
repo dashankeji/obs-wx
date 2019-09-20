@@ -235,8 +235,10 @@ Page({
             [stock]: res.data.data.storeInfo.stock,
             [store_name]: res.data.data.storeInfo.store_name,
             [price]: res.data.data.storeInfo.price,
-            [unique]: ''
-          })
+            [unique]: '',
+            attrName: '',
+            num: 1
+          });
 
         } else {
           wx.showToast({
@@ -297,8 +299,8 @@ Page({
      var limit = 0;
 
      if (that.data.hidden) return;
-     ++that.data.offset;
-     limit = that.data.offset * 8;
+  
+     limit = 8 * that.data.offset++;
 
      that.setData({
        hidden: true,
@@ -308,7 +310,7 @@ Page({
        'content-type': 'application/x-www-form-urlencoded',
      };
      wx.request({
-       url: app.globalData.url + '/routine/auth_api/indexXiaoben?uid=' + app.globalData.uid + '&cate_id=' + that.data.GbCateId + '&offset=' + (limit - 8) + '&limit=' + limit,
+       url: app.globalData.url + '/routine/auth_api/indexXiaoben?uid=' + app.globalData.uid + '&cate_id=' + that.data.GbCateId + '&offset=' + limit + '&limit=8',
        method: 'GET',
        header: header,
        success: function (res) {
@@ -337,6 +339,7 @@ Page({
     var key = e.currentTarget.dataset.key;
     var attrValues = [];
     var attrName = that.data.attrName;
+    console.log(attrName);
     var attrNameArr = attrName.split(",");
     var array = that.data.productAttr;
     for (var i in that.data.productAttr) {
@@ -351,6 +354,7 @@ Page({
         attrNameArr.splice(ii, 1);
       }
     }
+    console.log(attrNameArr);
     attrName = attrNameArr.join(',');
     if (attrName) var eName = e.currentTarget.dataset.key + ',' + attrName;
     else var eName = e.currentTarget.dataset.key;
