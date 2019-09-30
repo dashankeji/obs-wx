@@ -339,7 +339,7 @@ Page({
     var key = e.currentTarget.dataset.key;
     var attrValues = [];
     var attrName = that.data.attrName;
-    console.log(attrName);
+
     var attrNameArr = attrName.split(",");
     var array = that.data.productAttr;
     for (var i in that.data.productAttr) {
@@ -354,7 +354,7 @@ Page({
         attrNameArr.splice(ii, 1);
       }
     }
-    console.log(attrNameArr);
+  
     attrName = attrNameArr.join(',');
     if (attrName) var eName = e.currentTarget.dataset.key + ',' + attrName;
     else var eName = e.currentTarget.dataset.key;
